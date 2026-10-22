@@ -1,0 +1,1063 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#fff7fa">
+<title>Kartu Ucapan Digital | Ilyflowers</title>
+
+<style>
+:root {
+  --pink: #edb5ca;
+  --pink-dark: #c77f9d;
+  --pink-light: #fff0f5;
+  --white: #ffffff;
+  --text: #513d46;
+  --muted: #8c7881;
+  --border: #f0dce4;
+  --shadow: 0 12px 35px rgba(173,112,139,.10);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+  background: #fff8fb;
+  line-height: 1.6;
+}
+
+button, input, textarea, select { font: inherit; }
+button { -webkit-tap-highlight-color: transparent; cursor: pointer; }
+
+.site-background {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(rgba(255,248,251,.91), rgba(255,248,251,.91)),
+    url("backgrounds/website-bg.jpg") center / cover no-repeat;
+  pointer-events: none;
+}
+
+.container {
+  width: min(100% - 32px, 960px);
+  margin: auto;
+}
+
+.page {
+  min-height: 100vh;
+  padding: 25px 0 50px;
+}
+
+/* TOMBOL 3D */
+.btn-3d {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 12px 22px;
+  border: 1px solid #d99ab3;
+  border-radius: 10px;
+  background: linear-gradient(180deg, #f8d5e2, #edb5ca);
+  color: #593b48;
+  font-size: 14px;
+  font-weight: 700;
+  box-shadow: 0 5px 0 #d29ab0, 0 8px 15px rgba(173,112,139,.12);
+  transition: transform .15s, box-shadow .15s;
+}
+
+.btn-3d:active {
+  transform: translateY(4px);
+  box-shadow: 0 1px 0 #d29ab0;
+}
+
+.btn-white {
+  background: white;
+  border-color: #ead9e0;
+  box-shadow: 0 5px 0 #e5d5dc;
+}
+
+.btn-white:active { box-shadow: 0 1px 0 #e5d5dc; }
+.btn-3d:disabled { opacity: .7; cursor: wait; }
+
+/* HEADER */
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+
+.brand-small {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.brand-small img {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: white;
+  border: 1px solid var(--border);
+}
+
+/* PANEL */
+.panel {
+  background: rgba(255,255,255,.95);
+  border: 1px solid var(--border);
+  border-radius: 17px;
+  padding: clamp(16px, 4vw, 28px);
+  margin-bottom: 20px;
+  box-shadow: var(--shadow);
+}
+
+.section-heading { margin-bottom: 18px; }
+
+.section-heading h2 {
+  font-size: 21px;
+  letter-spacing: -.5px;
+  margin: 0 0 5px;
+}
+
+.section-heading p {
+  font-size: 13px;
+  color: var(--muted);
+  margin: 0;
+}
+
+/* FORM */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 17px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin-bottom: 16px;
+  min-width: 0;
+}
+
+.field.full { grid-column: 1 / -1; }
+
+.field label {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.field input,
+.field textarea,
+.field select {
+  width: 100%;
+  min-width: 0;
+  padding: 12px 13px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  color: var(--text);
+  background: #fffafd;
+  outline: none;
+  font-size: 14px;
+}
+
+.field input:focus,
+.field textarea:focus,
+.field select:focus {
+  border-color: var(--pink-dark);
+  box-shadow: 0 0 0 3px rgba(237,181,202,.20);
+}
+
+.field textarea {
+  min-height: 110px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+.helper { font-size: 11px; color: var(--muted); }
+
+/* PENGATUR UKURAN FONT */
+.font-size-controls {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.font-btn,
+.font-reset {
+  min-width: 48px;
+  height: 43px;
+  padding: 0 14px;
+  border: 1px solid #e7bdcd;
+  border-radius: 10px;
+  background: linear-gradient(180deg, #fff, #fff0f5);
+  color: #805368;
+  font-size: 17px;
+  font-weight: 700;
+  box-shadow: 0 4px 0 #ead3dd;
+  transition: transform .15s, box-shadow .15s;
+}
+
+.font-btn:active,
+.font-reset:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #ead3dd;
+}
+
+.font-reset {
+  font-size: 12px;
+  min-width: auto;
+}
+
+#fontSizeLabel {
+  min-width: 48px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: #805368;
+}
+
+/* PILIHAN DESAIN */
+.theme-carousel {
+  display: flex;
+  gap: 13px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding: 5px 3px 14px;
+  scrollbar-width: thin;
+}
+
+.theme-card {
+  flex: 0 0 155px;
+  scroll-snap-align: start;
+  padding: 9px;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  text-align: left;
+  color: var(--text);
+  box-shadow: 0 3px 0 #f1e4e9;
+}
+
+.theme-card.active {
+  border: 2px solid var(--pink-dark);
+  padding: 8px;
+  box-shadow: 0 4px 0 #e5b3c6;
+}
+
+.theme-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 5 / 7;
+  object-fit: cover;
+  border-radius: 7px;
+  background: var(--pink-light);
+}
+
+.theme-name {
+  display: block;
+  padding: 9px 3px 2px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.theme-status {
+  display: block;
+  padding: 0 3px 3px;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.carousel-controls {
+  display: flex;
+  justify-content: flex-end;
+  gap: 9px;
+  margin-top: 5px;
+}
+
+.arrow-btn {
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: white;
+  color: var(--pink-dark);
+  font-size: 20px;
+  box-shadow: 0 3px 0 #ead9e0;
+}
+
+/* PREVIEW KARTU */
+.preview-area {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.greeting-card {
+  position: relative;
+  width: min(100%, 380px);
+  aspect-ratio: 5 / 7;
+  overflow: hidden;
+  border-radius: 5px;
+  background-color: #f9e5ed;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  box-shadow: 0 12px 30px rgba(100,65,80,.16);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 11%;
+  text-align: center;
+}
+
+.card-content {
+  width: 100%;
+  max-height: 100%;
+  overflow: hidden;
+  overflow-wrap: anywhere;
+  color: #604653;
+  font-family: Arial, Helvetica, sans-serif;
+  text-shadow: 0 1px 2px rgba(255,255,255,.45);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-person {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.card-person[hidden] { display: none; }
+
+.card-label {
+  font-size: clamp(11px, 3vw, 14px);
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0;
+  letter-spacing: .4px;
+}
+
+.card-name {
+  font-size: clamp(11px, 3.2vw, 19px);
+  font-weight: 700;
+  line-height: 1.3;
+  margin: 2px 0 0;
+  overflow-wrap: anywhere;
+}
+
+.card-message {
+  width: 100%;
+  font-size: clamp(11px, 3.2vw, 16px);
+  line-height: 1.5;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  margin: 22px 0;
+  padding: 0;
+}
+
+/* AKSI */
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 13px;
+  margin-top: 22px;
+}
+
+.footer {
+  text-align: center;
+  padding: 22px 10px 0;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+@media (max-width: 540px) {
+  .page { padding-top: 18px; }
+  .form-grid { grid-template-columns: 1fr; }
+  .field.full { grid-column: auto; }
+  .theme-card { flex-basis: 140px; }
+  .btn-3d { padding: 11px 16px; }
+  .actions { gap: 12px; }
+}
+</style>
+</head>
+
+<body>
+<div class="site-background"></div>
+
+<section class="page">
+<div class="container">
+
+  <header class="topbar">
+    <div class="brand-small">
+      <img src="backgrounds/logo.png" alt=""
+           onerror="this.style.display='none'">
+      <span>Greeting Card by ilyflowers</span>
+    </div>
+  </header>
+
+  <!-- PILIH DESAIN -->
+  <section class="panel">
+    <div class="section-heading">
+      <h2>Pilih desain kartu</h2>
+      <p>Pilih desain yang kamu suka.</p>
+    </div>
+
+    <div class="theme-carousel" id="themeCarousel">
+
+      <button type="button" class="theme-card active"
+              data-design="pink" aria-pressed="true"
+              onclick="selectDesign('pink')">
+        <img src="backgrounds/kartu-pink.png" alt="Soft Pink">
+        <span class="theme-name">Soft Pink</span>
+        <span class="theme-status">Desain 01</span>
+      </button>
+
+      <button type="button" class="theme-card"
+              data-design="cream" aria-pressed="false"
+              onclick="selectDesign('cream')">
+        <img src="backgrounds/kartu-cream.png" alt="Cream">
+        <span class="theme-name">Cream</span>
+        <span class="theme-status">Desain 02</span>
+      </button>
+
+      <button type="button" class="theme-card"
+              data-design="blue" aria-pressed="false"
+              onclick="selectDesign('blue')">
+        <img src="backgrounds/kartu-blue.png" alt="Soft Blue">
+        <span class="theme-name">Soft Blue</span>
+        <span class="theme-status">Desain 03</span>
+      </button>
+
+      <button type="button" class="theme-card"
+              data-design="maroon" aria-pressed="false"
+              onclick="selectDesign('maroon')">
+        <img src="backgrounds/kartu-maroon.png" alt="Maroon">
+        <span class="theme-name">Maroon</span>
+        <span class="theme-status">Desain 04</span>
+      </button>
+
+      <button type="button" class="theme-card"
+              data-design="flowers" aria-pressed="false"
+              onclick="selectDesign('flowers')">
+        <img src="backgrounds/kartu-flowers.png" alt="Flowers">
+        <span class="theme-name">Flowers</span>
+        <span class="theme-status">Desain 05</span>
+      </button>
+
+      <button type="button" class="theme-card"
+              data-design="polos" aria-pressed="false"
+              onclick="selectDesign('polos')">
+        <img src="backgrounds/kartu-polos.png" alt="Polos">
+        <span class="theme-name">Polos</span>
+        <span class="theme-status">Desain 06</span>
+      </button>
+
+      <button type="button" class="theme-card"
+              data-design="hitam" aria-pressed="false"
+              onclick="selectDesign('hitam')">
+        <img src="backgrounds/kartu-hitam.png" alt="Black">
+        <span class="theme-name">Black</span>
+        <span class="theme-status">Desain 07</span>
+      </button>
+
+      <button type="button" class="theme-card"
+              data-design="magenta" aria-pressed="false"
+              onclick="selectDesign('magenta')">
+        <img src="backgrounds/kartu-magenta.png" alt="Magenta">
+        <span class="theme-name">Magenta</span>
+        <span class="theme-status">Desain 08</span>
+      </button>
+
+    </div>
+
+    <div class="carousel-controls">
+      <button type="button" class="arrow-btn"
+              aria-label="Desain sebelumnya"
+              onclick="moveCarousel(-1)">‹</button>
+      <button type="button" class="arrow-btn"
+              aria-label="Desain berikutnya"
+              onclick="moveCarousel(1)">›</button>
+    </div>
+  </section>
+
+  <!-- ISI UCAPAN -->
+  <section class="panel">
+    <div class="section-heading">
+      <h2>Tulis pesanmu di sini</h2>
+      <p>Isi nama dan pesan. Nama boleh dikosongkan jika tidak diperlukan.</p>
+    </div>
+
+    <div class="form-grid">
+
+      <div class="field">
+        <label for="recipient">Nama penerima</label>
+        <input id="recipient" type="text" maxlength="50"
+               placeholder="Contoh: Nadia">
+      </div>
+
+      <div class="field">
+        <label for="sender">Nama pengirim</label>
+        <input id="sender" type="text" maxlength="50"
+               placeholder="Contoh: Amadha">
+      </div>
+
+      <div class="field full">
+        <label for="message">Pesan ucapan</label>
+        <textarea id="message" maxlength="500"
+                  placeholder="Tuliskan pesan ucapanmu..."></textarea>
+        <span class="helper">Maksimal 500 karakter.</span>
+      </div>
+
+      <div class="field">
+        <label for="fontChoice">Pilih font</label>
+        <select id="fontChoice">
+          <option value="Arial, Helvetica, sans-serif">Modern</option>
+          <option value="Georgia, serif">Elegant</option>
+          <option value="'Brush Script MT', cursive">Romantic</option>
+          <option value="'Courier New', monospace">Vintage</option>
+          <option value="Impact, sans-serif">Bold</option>
+          <option value="'Trebuchet MS', sans-serif">Friendly</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="textColor">Pilih warna tulisan</label>
+        <input id="textColor" type="color" value="#604653"
+               style="height:46px;padding:5px">
+      </div>
+
+      <!-- PENGATUR UKURAN FONT -->
+      <div class="field full">
+        <label>Ukuran tulisan kartu</label>
+
+        <div class="font-size-controls">
+          <button type="button" class="font-btn"
+                  onclick="changeFontSize(-1)"
+                  aria-label="Perkecil tulisan">A−</button>
+
+          <span id="fontSizeLabel">100%</span>
+
+          <button type="button" class="font-btn"
+                  onclick="changeFontSize(1)"
+                  aria-label="Perbesar tulisan">A+</button>
+
+          <button type="button" class="font-reset"
+                  onclick="resetFontSize()">Normal</button>
+        </div>
+
+        <span class="helper">
+          Perkecil atau perbesar nama dan pesan pada kartu.
+        </span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PREVIEW -->
+  <section class="panel">
+    <div class="section-heading">
+      <h2>Preview kartu</h2>
+      <p>Periksa hasilnya sebelum mengunduh.</p>
+    </div>
+
+    <div class="preview-area">
+      <div class="greeting-card" id="greetingCard">
+        <div class="card-content" id="cardContent">
+
+          <div class="card-person" id="recipientBlock" hidden>
+            <div class="card-label">To:</div>
+            <div class="card-name" id="previewRecipient"></div>
+          </div>
+
+          <div class="card-message" id="previewMessage">Tuliskan pesan di sini.</div>
+
+          <div class="card-person" id="senderBlock" hidden>
+            <div class="card-label">From:</div>
+            <div class="card-name" id="previewSender"></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="btn-3d" id="downloadBtn"
+              type="button" onclick="downloadCard()">
+        Unduh Kartu
+      </button>
+
+      <button class="btn-3d btn-white"
+              type="button" onclick="resetForm()">
+        Reset
+      </button>
+    </div>
+  </section>
+
+  <footer class="footer">@ilyflowerskdl</footer>
+
+</div>
+</section>
+
+<script>
+const DESIGNS = {
+  pink: {
+    image: "backgrounds/kartu-pink.png",
+    color: "#f9e5ed"
+  },
+  cream: {
+    image: "backgrounds/kartu-cream.png",
+    color: "#f6ead5"
+  },
+  blue: {
+    image: "backgrounds/kartu-blue.png",
+    color: "#dceaf7"
+  },
+  maroon: {
+    image: "backgrounds/kartu-maroon.png",
+    color: "#e8dff5"
+  },
+  flowers: {
+    image: "backgrounds/kartu-flowers.png",
+    color: "#e8dff5"
+  },
+  polos: {
+    image: "backgrounds/kartu-polos.png",
+    color: "#e8dff5"
+  },
+  hitam: {
+    image: "backgrounds/kartu-hitam.png",
+    color: "#e8dff5"
+  },
+  magenta: {
+    image: "backgrounds/kartu-magenta.png",
+    color: "#e8dff5"
+  }
+};
+
+let currentDesign = "pink";
+let fontScale = 1;
+
+const recipient = document.getElementById("recipient");
+const sender = document.getElementById("sender");
+const message = document.getElementById("message");
+const fontChoice = document.getElementById("fontChoice");
+const textColor = document.getElementById("textColor");
+const card = document.getElementById("greetingCard");
+const cardContent = document.getElementById("cardContent");
+const recipientBlock = document.getElementById("recipientBlock");
+const senderBlock = document.getElementById("senderBlock");
+
+/* PENGATUR UKURAN FONT */
+function changeFontSize(direction) {
+  fontScale = Math.max(
+    0.7,
+    Math.min(
+      1.5,
+      Math.round((fontScale + direction * 0.1) * 10) / 10
+    )
+  );
+
+  updatePreview();
+}
+
+function resetFontSize() {
+  fontScale = 1;
+  updatePreview();
+}
+
+/* PILIH DESAIN */
+function selectDesign(name) {
+  if (!DESIGNS[name]) return;
+
+  currentDesign = name;
+
+  document.querySelectorAll(".theme-card").forEach(button => {
+    const active = button.dataset.design === name;
+    button.classList.toggle("active", active);
+    button.setAttribute("aria-pressed", String(active));
+  });
+
+  updatePreview();
+}
+
+/* GESER PILIHAN DESAIN */
+function moveCarousel(direction) {
+  document.getElementById("themeCarousel").scrollBy({
+    left: direction * 170,
+    behavior: "smooth"
+  });
+}
+
+/* PERBARUI PREVIEW */
+function updatePreview() {
+  const toName = recipient.value.trim();
+  const fromName = sender.value.trim();
+
+  document.getElementById("previewRecipient").textContent = toName;
+  document.getElementById("previewSender").textContent = fromName;
+
+  recipientBlock.hidden = !toName;
+  senderBlock.hidden = !fromName;
+
+  document.getElementById("previewMessage").textContent =
+    message.value.trim() || "Tuliskan pesan di sini.";
+
+  card.style.backgroundImage =
+    'url("' + DESIGNS[currentDesign].image + '")';
+
+  card.style.backgroundColor = DESIGNS[currentDesign].color;
+
+  cardContent.style.fontFamily = fontChoice.value;
+  cardContent.style.color = textColor.value;
+
+  /* Persentase ukuran font */
+  document.getElementById("fontSizeLabel").textContent =
+    Math.round(fontScale * 100) + "%";
+
+  /* Nama penerima dan pengirim */
+  document.querySelectorAll(".card-name").forEach(element => {
+    element.style.fontSize =
+      `clamp(8px, ${3.2 * fontScale}vw, ${19 * fontScale}px)`;
+  });
+
+  /* Label To dan From */
+  document.querySelectorAll(".card-label").forEach(element => {
+    element.style.fontSize =
+      `clamp(8px, ${3 * fontScale}vw, ${14 * fontScale}px)`;
+  });
+
+  /* Pesan */
+  const previewMessage = document.getElementById("previewMessage");
+
+  previewMessage.style.fontSize =
+    `clamp(8px, ${3.2 * fontScale}vw, ${16 * fontScale}px)`;
+}
+
+/* LIVE UPDATE */
+[recipient, sender, message, fontChoice, textColor].forEach(element => {
+  element.addEventListener("input", updatePreview);
+  element.addEventListener("change", updatePreview);
+});
+
+/* RESET */
+function resetForm() {
+  recipient.value = "";
+  sender.value = "";
+  message.value = "";
+  fontChoice.selectedIndex = 0;
+  textColor.value = "#604653";
+  fontScale = 1;
+
+  selectDesign("pink");
+
+  document.getElementById("themeCarousel").scrollTo({
+    left: 0,
+    behavior: "smooth"
+  });
+
+  updatePreview();
+}
+
+/* MUAT GAMBAR */
+function loadCardImage(src) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+
+    img.onload = () => resolve(img);
+    img.onerror = () => reject(
+      new Error("Background gagal dimuat: " + src)
+    );
+
+    img.src = src;
+  });
+}
+
+/* PECAH TEKS MENJADI BARIS */
+function wrapCanvasText(ctx, text, maxWidth) {
+  const paragraphs = String(text).split("\n");
+  const lines = [];
+
+  paragraphs.forEach(paragraph => {
+    if (!paragraph) {
+      lines.push("");
+      return;
+    }
+
+    const words = paragraph.split(/\s+/);
+    let line = "";
+
+    words.forEach(word => {
+      let remaining = word;
+
+      while (remaining.length > 0) {
+        const test = line ? line + " " + remaining : remaining;
+
+        if (ctx.measureText(test).width <= maxWidth) {
+          line = test;
+          remaining = "";
+        } else if (line) {
+          lines.push(line);
+          line = "";
+        } else {
+          let part = "";
+
+          for (const char of remaining) {
+            if (
+              ctx.measureText(part + char).width > maxWidth &&
+              part
+            ) break;
+
+            part += char;
+          }
+
+          if (!part) part = remaining[0];
+
+          lines.push(part);
+          remaining = remaining.slice(part.length);
+        }
+      }
+    });
+
+    if (line) lines.push(line);
+  });
+
+  return lines;
+}
+
+/* UNDUH PNG RESOLUSI TINGGI */
+async function downloadCard() {
+  const button = document.getElementById("downloadBtn");
+  const originalText = button.textContent;
+
+  button.disabled = true;
+  button.textContent = "Menyiapkan kartu...";
+
+  try {
+    updatePreview();
+
+    const image = await loadCardImage(DESIGNS[currentDesign].image);
+
+    const canvas = document.createElement("canvas");
+    canvas.width = 750;
+    canvas.height = 1050;
+
+    const ctx = canvas.getContext("2d");
+    if (!ctx) throw new Error("Canvas tidak tersedia.");
+
+    const W = canvas.width;
+    const H = canvas.height;
+
+    ctx.fillStyle = DESIGNS[currentDesign].color;
+    ctx.fillRect(0, 0, W, H);
+
+    /* Background dengan metode cover */
+    const scale = Math.max(
+      W / image.naturalWidth,
+      H / image.naturalHeight
+    );
+
+    const drawW = image.naturalWidth * scale;
+    const drawH = image.naturalHeight * scale;
+
+    ctx.drawImage(
+      image,
+      (W - drawW) / 2,
+      (H - drawH) / 2,
+      drawW,
+      drawH
+    );
+
+    const maxWidth = W * 0.78;
+    const family = fontChoice.value;
+    const color = textColor.value;
+
+    const toName = recipient.value.trim();
+    const fromName = sender.value.trim();
+    const msg = message.value.trim() || "Tuliskan pesan di sini.";
+
+    /* Ukuran dasar mengikuti pilihan pelanggan */
+    let nameSize = Math.round(35 * fontScale);
+    let labelSize = Math.round(25 * fontScale);
+    let messageSize = Math.round(29 * fontScale);
+    let gap = Math.round(38 * fontScale);
+
+    let layout;
+
+    function prepareLayout() {
+      const recipientLines = [];
+      const senderLines = [];
+
+      if (toName) {
+        ctx.font = `700 ${nameSize}px ${family}`;
+        recipientLines.push(...wrapCanvasText(ctx, toName, maxWidth));
+      }
+
+      if (fromName) {
+        ctx.font = `700 ${nameSize}px ${family}`;
+        senderLines.push(...wrapCanvasText(ctx, fromName, maxWidth));
+      }
+
+      ctx.font = `${messageSize}px ${family}`;
+      const messageLines = wrapCanvasText(ctx, msg, maxWidth);
+
+      const labelHeight = labelSize * 1.3;
+      const nameHeight = nameSize * 1.3;
+      const messageHeight = messageSize * 1.5;
+
+      const recipientHeight = toName
+        ? labelHeight + recipientLines.length * nameHeight
+        : 0;
+
+      const senderHeight = fromName
+        ? labelHeight + senderLines.length * nameHeight
+        : 0;
+
+      const gapCount =
+        Number(Boolean(toName)) + Number(Boolean(fromName));
+
+      const totalHeight =
+        recipientHeight +
+        senderHeight +
+        messageLines.length * messageHeight +
+        gap * gapCount;
+
+      return {
+        recipientLines,
+        senderLines,
+        messageLines,
+        labelHeight,
+        nameHeight,
+        messageHeight,
+        totalHeight
+      };
+    }
+
+    layout = prepareLayout();
+
+    /* Otomatis mengecilkan jika isi terlalu panjang */
+    while (layout.totalHeight > H * 0.80 && messageSize > 17) {
+      messageSize--;
+      gap = Math.max(12, gap - 1);
+      layout = prepareLayout();
+    }
+
+    while (layout.totalHeight > H * 0.88 && nameSize > 15) {
+      nameSize--;
+      labelSize = Math.max(14, labelSize - 1);
+      layout = prepareLayout();
+    }
+
+    ctx.textAlign = "center";
+    ctx.textBaseline = "top";
+    ctx.fillStyle = color;
+    ctx.shadowColor = "rgba(255,255,255,0.35)";
+    ctx.shadowBlur = 1;
+    ctx.shadowOffsetX = 0;
+    ctx.shadowOffsetY = 1;
+
+    const centerX = W / 2;
+    let y = Math.max(40, (H - layout.totalHeight) / 2);
+
+    function drawLines(lines, font, lineHeight) {
+      ctx.font = font;
+
+      lines.forEach(line => {
+        ctx.fillText(line, centerX, y, maxWidth);
+        y += lineHeight;
+      });
+    }
+
+    /* TO hanya muncul jika nama penerima diisi */
+    if (toName) {
+      drawLines(
+        ["To:"],
+        `600 ${labelSize}px ${family}`,
+        layout.labelHeight
+      );
+
+      drawLines(
+        layout.recipientLines,
+        `700 ${nameSize}px ${family}`,
+        layout.nameHeight
+      );
+
+      y += gap;
+    }
+
+    /* PESAN UCAPAN */
+    drawLines(
+      layout.messageLines,
+      `${messageSize}px ${family}`,
+      layout.messageHeight
+    );
+
+    /* FROM hanya muncul jika nama pengirim diisi */
+    if (fromName) {
+      y += gap;
+
+      drawLines(
+        ["From:"],
+        `600 ${labelSize}px ${family}`,
+        layout.labelHeight
+      );
+
+      drawLines(
+        layout.senderLines,
+        `700 ${nameSize}px ${family}`,
+        layout.nameHeight
+      );
+    }
+
+    ctx.shadowColor = "transparent";
+    ctx.shadowBlur = 0;
+    ctx.shadowOffsetY = 0;
+
+    const blob = await new Promise((resolve, reject) => {
+      canvas.toBlob(result => {
+        if (result) resolve(result);
+        else reject(new Error("PNG gagal dibuat."));
+      }, "image/png");
+    });
+
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+
+    link.download = "kartu-ucapan-2R.png";
+    link.href = url;
+
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+
+    setTimeout(() => URL.revokeObjectURL(url), 1500);
+
+  } catch (error) {
+    console.error(error);
+    alert("Kartu gagal diunduh. Periksa nama dan lokasi file background.");
+  } finally {
+    button.disabled = false;
+    button.textContent = originalText;
+  }
+}
+
+/* PREVIEW PERTAMA */
+updatePreview();
+</script>
+
+</body>
+</html>
