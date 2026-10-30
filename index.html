@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -6,6 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#fff7fa">
 <title>Kartu Ucapan Digital | Ilyflowers</title>
+
+<!-- GOOGLE FONTS -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Playfair+Display:wght@400;600;700&family=Great+Vibes&family=Courier+Prime&family=Oswald:wght@400;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root {
@@ -20,12 +24,13 @@
 }
 
 * { box-sizing: border-box; }
+
 html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
   color: var(--text);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'DM Sans', sans-serif;
   background: #fff8fb;
   line-height: 1.6;
 }
@@ -155,7 +160,7 @@ button { -webkit-tap-highlight-color: transparent; cursor: pointer; }
   font-weight: 700;
 }
 
-.field input,
+.field input[type="text"],
 .field textarea,
 .field select {
   width: 100%;
@@ -182,51 +187,12 @@ button { -webkit-tap-highlight-color: transparent; cursor: pointer; }
   line-height: 1.6;
 }
 
-.helper { font-size: 11px; color: var(--muted); }
-
-/* PENGATUR UKURAN FONT */
-.font-size-controls {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 12px;
+.helper {
+  font-size: 11px;
+  color: var(--muted);
 }
 
-.font-btn,
-.font-reset {
-  min-width: 48px;
-  height: 43px;
-  padding: 0 14px;
-  border: 1px solid #e7bdcd;
-  border-radius: 10px;
-  background: linear-gradient(180deg, #fff, #fff0f5);
-  color: #805368;
-  font-size: 17px;
-  font-weight: 700;
-  box-shadow: 0 4px 0 #ead3dd;
-  transition: transform .15s, box-shadow .15s;
-}
-
-.font-btn:active,
-.font-reset:active {
-  transform: translateY(3px);
-  box-shadow: 0 1px 0 #ead3dd;
-}
-
-.font-reset {
-  font-size: 12px;
-  min-width: auto;
-}
-
-#fontSizeLabel {
-  min-width: 48px;
-  text-align: center;
-  font-size: 13px;
-  font-weight: 700;
-  color: #805368;
-}
-
-/* PILIHAN DESAIN */
+/* CAROUSEL DESAIN */
 .theme-carousel {
   display: flex;
   gap: 13px;
@@ -296,6 +262,167 @@ button { -webkit-tap-highlight-color: transparent; cursor: pointer; }
   box-shadow: 0 3px 0 #ead9e0;
 }
 
+/* PILIHAN WARNA FONT */
+.color-palette {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 11px;
+  align-items: center;
+  padding: 4px 0;
+}
+
+.color-choice {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid white;
+  outline: 1px solid #e7dce1;
+  padding: 0;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.color-choice.active {
+  outline: 2px solid var(--pink-dark);
+  outline-offset: 2px;
+}
+
+.color-choice.active::after {
+  content: "✓";
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: white;
+  font-size: 15px;
+  font-weight: 700;
+  text-shadow: 0 1px 3px #555;
+}
+
+.color-custom {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 12px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.color-custom input {
+  width: 42px;
+  height: 36px;
+  padding: 2px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: white;
+  cursor: pointer;
+}
+
+/* UKURAN FONT */
+.font-size-controls {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.font-btn,
+.font-reset {
+  min-width: 48px;
+  height: 43px;
+  padding: 0 14px;
+  border: 1px solid #e7bdcd;
+  border-radius: 10px;
+  background: linear-gradient(180deg, #fff, #fff0f5);
+  color: #805368;
+  font-size: 17px;
+  font-weight: 700;
+  box-shadow: 0 4px 0 #ead3dd;
+  transition: transform .15s, box-shadow .15s;
+}
+
+.font-btn:active,
+.font-reset:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #ead3dd;
+}
+
+.font-reset {
+  font-size: 12px;
+  min-width: auto;
+}
+
+#fontSizeLabel {
+  min-width: 48px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: #805368;
+}
+
+/* PENGATURAN POSISI TEKS */
+.position-settings {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #fffafd;
+  margin-top: 4px;
+}
+
+.position-settings summary {
+  padding: 14px;
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+  font-weight: 700;
+  color: #805368;
+}
+
+.position-settings summary::-webkit-details-marker {
+  display: none;
+}
+
+.position-settings summary::after {
+  content: "+";
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.position-settings[open] summary::after {
+  content: "−";
+}
+
+.position-content {
+  padding: 0 14px 15px;
+}
+
+.range-row { margin-bottom: 16px; }
+
+.range-heading {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  margin-bottom: 7px;
+}
+
+.range-heading strong { color: var(--pink-dark); }
+
+.range-row input {
+  width: 100%;
+  accent-color: var(--pink-dark);
+}
+
+.reset-position {
+  border: 1px solid #e8cbd9;
+  background: white;
+  color: #9d6480;
+  border-radius: 9px;
+  padding: 9px 12px;
+  font-size: 11px;
+}
+
 /* PREVIEW KARTU */
 .preview-area {
   display: flex;
@@ -317,22 +444,22 @@ button { -webkit-tap-highlight-color: transparent; cursor: pointer; }
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 11%;
-  text-align: center;
 }
 
 .card-content {
   width: 100%;
-  max-height: 100%;
+  height: 100%;
+  padding: 15% 18%;
   overflow: hidden;
   overflow-wrap: anywhere;
   color: #604653;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'DM Sans', sans-serif;
   text-shadow: 0 1px 2px rgba(255,255,255,.45);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
 }
 
 .card-person {
@@ -456,7 +583,7 @@ button { -webkit-tap-highlight-color: transparent; cursor: pointer; }
               onclick="selectDesign('flowers')">
         <img src="backgrounds/kartu-flowers.png" alt="Flowers">
         <span class="theme-name">Flowers</span>
-        <span class="theme-status">flowers</span>
+        <span class="theme-status">Flowers</span>
       </button>
 
       <button type="button" class="theme-card"
@@ -464,7 +591,7 @@ button { -webkit-tap-highlight-color: transparent; cursor: pointer; }
               onclick="selectDesign('polos')">
         <img src="backgrounds/kartu-polos.png" alt="Polos">
         <span class="theme-name">Polos</span>
-        <span class="theme-status">white</span>
+        <span class="theme-status">Polos</span>
       </button>
 
       <button type="button" class="theme-card"
@@ -480,21 +607,21 @@ button { -webkit-tap-highlight-color: transparent; cursor: pointer; }
               onclick="selectDesign('bouquet')">
         <img src="backgrounds/kartu-bouquet.png" alt="Bouquet">
         <span class="theme-name">Bouquet</span>
-        <span class="theme-status">bouquet</span>
+        <span class="theme-status">Bouquet</span>
       </button>
 
-       <button type="button" class="theme-card"
+      <button type="button" class="theme-card"
               data-design="vintage" aria-pressed="false"
               onclick="selectDesign('vintage')">
         <img src="backgrounds/kartu-vintage.png" alt="Vintage">
-        <span class="theme-name">vintage</span>
-        <span class="theme-status">vintage</span>
+        <span class="theme-name">Vintage</span>
+        <span class="theme-status">Vintage</span>
       </button>
 
-       <button type="button" class="theme-card"
+      <button type="button" class="theme-card"
               data-design="butterflypink" aria-pressed="false"
               onclick="selectDesign('butterflypink')">
-        <img src="backgrounds/kartu-butterflypink.png" alt="Butterfly pink">
+        <img src="backgrounds/kartu-butterflypink.png" alt="Butterfly Pink">
         <span class="theme-name">Butterfly Pink</span>
         <span class="theme-status">Pink</span>
       </button>
@@ -542,22 +669,95 @@ button { -webkit-tap-highlight-color: transparent; cursor: pointer; }
       <div class="field">
         <label for="fontChoice">Pilih font</label>
         <select id="fontChoice">
-          <option value="Arial, Helvetica, sans-serif">Modern</option>
-          <option value="Georgia, serif">Elegant</option>
-          <option value="'Brush Script MT', cursive">Romantic</option>
-          <option value="'Courier New', monospace">Vintage</option>
-          <option value="Impact, sans-serif">Bold</option>
-          <option value="'Trebuchet MS', sans-serif">Friendly</option>
+          <option value="'DM Sans', sans-serif">Modern</option>
+          <option value="'Playfair Display', serif">Elegant</option>
+          <option value="'Great Vibes', cursive">Romantic</option>
+          <option value="'Courier Prime', monospace">Vintage</option>
+          <option value="'Oswald', sans-serif">Bold</option>
+          <option value="'Nunito', sans-serif">Friendly</option>
         </select>
       </div>
 
+      <!-- WARNA FONT -->
       <div class="field">
-        <label for="textColor">Pilih warna tulisan</label>
-        <input id="textColor" type="color" value="#604653"
-               style="height:46px;padding:5px">
+        <label>Pilih warna tulisan</label>
+
+        <div class="color-palette" id="colorPalette">
+
+          <button type="button" class="color-choice active"
+            style="background:#604653"
+            data-color="#604653" aria-label="Dark Brown"></button>
+
+          <button type="button" class="color-choice"
+            style="background:#222222"
+            data-color="#222222" aria-label="Black"></button>
+
+          <button type="button" class="color-choice"
+            style="background:#ffffff"
+            data-color="#ffffff" aria-label="White"></button>
+
+          <button type="button" class="color-choice"
+            style="background:#795548"
+            data-color="#795548" aria-label="Brown"></button>
+
+          <button type="button" class="color-choice"
+            style="background:#b76e79"
+            data-color="#b76e79" aria-label="Rose"></button>
+
+          <button type="button" class="color-choice"
+            style="background:#c08098"
+            data-color="#c08098" aria-label="Dusty Pink"></button>
+
+          <button type="button" class="color-choice"
+            style="background:#800020"
+            data-color="#800020" aria-label="Maroon"></button>
+
+          <button type="button" class="color-choice"
+            style="background:#263b63"
+            data-color="#263b63" aria-label="Navy"></button>
+
+          <button type="button" class="color-choice"
+            style="background:#71856b"
+            data-color="#71856b" aria-label="Sage"></button>
+
+          <button type="button" class="color-choice"
+            style="background:#777344"
+            data-color="#777344" aria-label="Olive"></button>
+
+          <button type="button" class="color-choice"
+            style="background:#79518f"
+            data-color="#79518f" aria-label="Purple"></button>
+
+          <button type="button" class="color-choice"
+            style="background:#b08d57"
+            data-color="#b08d57" aria-label="Gold"></button>
+
+          <button type="button" class="color-choice"
+            style="background:#64748b"
+            data-color="#64748b" aria-label="Slate"></button>
+
+          <button type="button" class="color-choice"
+            style="background:#a65d3f"
+            data-color="#a65d3f" aria-label="Terracotta"></button>
+
+          <button type="button" class="color-choice"
+            style="background:#d65f83"
+            data-color="#d65f83" aria-label="Pink"></button>
+
+          <button type="button" class="color-choice"
+            style="background:#397b75"
+            data-color="#397b75" aria-label="Teal"></button>
+
+        </div>
+
+        <div class="color-custom">
+          <input type="color" id="customColor" value="#604653"
+                 aria-label="Pilih warna custom">
+          <label for="customColor">Pilih warna sendiri</label>
+        </div>
       </div>
 
-      <!-- PENGATUR UKURAN FONT -->
+      <!-- UKURAN FONT -->
       <div class="field full">
         <label>Ukuran tulisan kartu</label>
 
@@ -581,6 +781,43 @@ button { -webkit-tap-highlight-color: transparent; cursor: pointer; }
         </span>
       </div>
 
+      <!-- PENGATURAN POSISI TEKS -->
+      <div class="field full">
+        <details class="position-settings" id="positionSettings">
+          <summary>Atur Posisi Teks <span class="helper">Opsional</span></summary>
+
+          <div class="position-content">
+
+            <div class="range-row">
+              <div class="range-heading">
+                <label for="horizontalMargin">Margin kiri–kanan</label>
+                <strong id="horizontalValue">18%</strong>
+              </div>
+              <input type="range" id="horizontalMargin"
+                     min="5" max="30" value="18">
+            </div>
+
+            <div class="range-row">
+              <div class="range-heading">
+                <label for="verticalMargin">Margin atas–bawah</label>
+                <strong id="verticalValue">15%</strong>
+              </div>
+              <input type="range" id="verticalMargin"
+                     min="5" max="30" value="15">
+            </div>
+
+            <button type="button" class="reset-position"
+                    onclick="resetPosition()">
+              Kembalikan ke Pengaturan Awal
+            </button>
+
+            <p class="helper">
+              Geser pengaturan untuk menyesuaikan ruang tulisan pada kartu.
+            </p>
+          </div>
+        </details>
+      </div>
+
     </div>
   </section>
 
@@ -600,7 +837,9 @@ button { -webkit-tap-highlight-color: transparent; cursor: pointer; }
             <div class="card-name" id="previewRecipient"></div>
           </div>
 
-          <div class="card-message" id="previewMessage">Tuliskan pesan di sini.</div>
+          <div class="card-message" id="previewMessage">
+            Tuliskan pesan di sini.
+          </div>
 
           <div class="card-person" id="senderBlock" hidden>
             <div class="card-label">From:</div>
@@ -630,63 +869,112 @@ button { -webkit-tap-highlight-color: transparent; cursor: pointer; }
 </section>
 
 <script>
+// ==========================================
+// DAFTAR DESAIN
+// ==========================================
+
 const DESIGNS = {
-  ribbonmaroon: {
-    image: "backgrounds/kartu-ribbonmaroon.png",
-    color: "#f9e5ed"
-  },
-  ribbonblack: {
-    image: "backgrounds/kartu-ribbonblack.png",
-    color: "#f6ead5"
-  },
-  softblue: {
-    image: "backgrounds/kartu-softblue.png",
-    color: "#dceaf7"
-  },
-  whitegold: {
-    image: "backgrounds/kartu-whitegold.png",
-    color: "#e8dff5"
-  },
-  flowers: {
-    image: "backgrounds/kartu-flowers.png",
-    color: "#e8dff5"
-  },
-  polos: {
-    image: "backgrounds/kartu-polos.png",
-    color: "#e8dff5"
-  },
-  ribbonred: {
-    image: "backgrounds/kartu-ribbonred.png",
-    color: "#e8dff5"
-  },
-  bouquet: {
-    image: "backgrounds/kartu-bouquet.png",
-    color: "#e8dff5"
-  }, 
-  vintage: {
-    image: "backgrounds/kartu-vintage.png",
-    color: "#e8dff5"
-  }, 
-  butterflypink: {
-    image: "backgrounds/kartu-butterflypink.png",
-    color: "#e8dff5"
-  }
+  ribbonmaroon: "backgrounds/kartu-ribbonmaroon.png",
+  ribbonblack: "backgrounds/kartu-ribbonblack.png",
+  softblue: "backgrounds/kartu-softblue.png",
+  whitegold: "backgrounds/kartu-whitegold.png",
+  flowers: "backgrounds/kartu-flowers.png",
+  polos: "backgrounds/kartu-polos.png",
+  ribbonred: "backgrounds/kartu-ribbonred.png",
+  bouquet: "backgrounds/kartu-bouquet.png",
+  vintage: "backgrounds/kartu-vintage.png",
+  butterflypink: "backgrounds/kartu-butterflypink.png"
 };
 
-let currentDesign = "pink";
+// ==========================================
+// PENGATURAN AWAL
+// ==========================================
+
+let currentDesign = "ribbonmaroon";
 let fontScale = 1;
+let selectedColor = "#604653";
+
+let horizontalMargin = 18;
+let verticalMargin = 15;
 
 const recipient = document.getElementById("recipient");
 const sender = document.getElementById("sender");
 const message = document.getElementById("message");
 const fontChoice = document.getElementById("fontChoice");
-const textColor = document.getElementById("textColor");
 const card = document.getElementById("greetingCard");
 const cardContent = document.getElementById("cardContent");
+
 const recipientBlock = document.getElementById("recipientBlock");
 const senderBlock = document.getElementById("senderBlock");
 
-/* PENGATUR UKURAN FONT */
+// ==========================================
+// PILIH DESAIN
+// ==========================================
+
+function selectDesign(name) {
+  if (!DESIGNS[name]) return;
+
+  currentDesign = name;
+
+  document.querySelectorAll(".theme-card").forEach(button => {
+    const active = button.dataset.design === name;
+
+    button.classList.toggle("active", active);
+    button.setAttribute("aria-pressed", String(active));
+  });
+
+  updatePreview();
+}
+
+// ==========================================
+// GESER CAROUSEL
+// ==========================================
+
+function moveCarousel(direction) {
+  document.getElementById("themeCarousel").scrollBy({
+    left: direction * 170,
+    behavior: "smooth"
+  });
+}
+
+// ==========================================
+// PILIH WARNA FONT
+// ==========================================
+
+function selectColor(color) {
+  selectedColor = color;
+
+  document.querySelectorAll(".color-choice").forEach(button => {
+    button.classList.toggle(
+      "active",
+      button.dataset.color.toLowerCase() === color.toLowerCase()
+    );
+  });
+
+  document.getElementById("customColor").value = color;
+  updatePreview();
+}
+
+document.querySelectorAll(".color-choice").forEach(button => {
+  button.addEventListener("click", () => {
+    selectColor(button.dataset.color);
+  });
+});
+
+document.getElementById("customColor").addEventListener("input", function() {
+  selectedColor = this.value;
+
+  document.querySelectorAll(".color-choice").forEach(button => {
+    button.classList.remove("active");
+  });
+
+  updatePreview();
+});
+
+// ==========================================
+// UKURAN FONT
+// ==========================================
+
 function changeFontSize(direction) {
   fontScale = Math.max(
     0.7,
@@ -704,30 +992,36 @@ function resetFontSize() {
   updatePreview();
 }
 
-/* PILIH DESAIN */
-function selectDesign(name) {
-  if (!DESIGNS[name]) return;
+// ==========================================
+// PENGATURAN MARGIN
+// ==========================================
 
-  currentDesign = name;
-
-  document.querySelectorAll(".theme-card").forEach(button => {
-    const active = button.dataset.design === name;
-    button.classList.toggle("active", active);
-    button.setAttribute("aria-pressed", String(active));
+document.getElementById("horizontalMargin")
+  .addEventListener("input", function() {
+    horizontalMargin = Number(this.value);
+    updatePreview();
   });
+
+document.getElementById("verticalMargin")
+  .addEventListener("input", function() {
+    verticalMargin = Number(this.value);
+    updatePreview();
+  });
+
+function resetPosition() {
+  horizontalMargin = 18;
+  verticalMargin = 15;
+
+  document.getElementById("horizontalMargin").value = 18;
+  document.getElementById("verticalMargin").value = 15;
 
   updatePreview();
 }
 
-/* GESER PILIHAN DESAIN */
-function moveCarousel(direction) {
-  document.getElementById("themeCarousel").scrollBy({
-    left: direction * 170,
-    behavior: "smooth"
-  });
-}
+// ==========================================
+// UPDATE PREVIEW
+// ==========================================
 
-/* PERBARUI PREVIEW */
 function updatePreview() {
   const toName = recipient.value.trim();
   const fromName = sender.value.trim();
@@ -742,52 +1036,69 @@ function updatePreview() {
     message.value.trim() || "Tuliskan pesan di sini.";
 
   card.style.backgroundImage =
-    'url("' + DESIGNS[currentDesign].image + '")';
-
-  card.style.backgroundColor = DESIGNS[currentDesign].color;
+    `url("${DESIGNS[currentDesign]}")`;
 
   cardContent.style.fontFamily = fontChoice.value;
-  cardContent.style.color = textColor.value;
+  cardContent.style.color = selectedColor;
 
-  /* Persentase ukuran font */
+  // Margin preview
+  cardContent.style.padding =
+    `${verticalMargin}% ${horizontalMargin}%`;
+
+  // Ukuran font
   document.getElementById("fontSizeLabel").textContent =
     Math.round(fontScale * 100) + "%";
 
-  /* Nama penerima dan pengirim */
   document.querySelectorAll(".card-name").forEach(element => {
     element.style.fontSize =
       `clamp(8px, ${3.2 * fontScale}vw, ${19 * fontScale}px)`;
   });
 
-  /* Label To dan From */
   document.querySelectorAll(".card-label").forEach(element => {
     element.style.fontSize =
       `clamp(8px, ${3 * fontScale}vw, ${14 * fontScale}px)`;
   });
 
-  /* Pesan */
   const previewMessage = document.getElementById("previewMessage");
 
   previewMessage.style.fontSize =
     `clamp(8px, ${3.2 * fontScale}vw, ${16 * fontScale}px)`;
+
+  // Label margin
+  document.getElementById("horizontalValue").textContent =
+    horizontalMargin + "%";
+
+  document.getElementById("verticalValue").textContent =
+    verticalMargin + "%";
 }
 
-/* LIVE UPDATE */
-[recipient, sender, message, fontChoice, textColor].forEach(element => {
+// ==========================================
+// LIVE UPDATE
+// ==========================================
+
+[recipient, sender, message, fontChoice].forEach(element => {
   element.addEventListener("input", updatePreview);
   element.addEventListener("change", updatePreview);
 });
 
-/* RESET */
+// ==========================================
+// RESET FORM
+// ==========================================
+
 function resetForm() {
   recipient.value = "";
   sender.value = "";
   message.value = "";
+
   fontChoice.selectedIndex = 0;
-  textColor.value = "#604653";
   fontScale = 1;
 
-  selectDesign("pink");
+  selectColor("#604653");
+  resetPosition();
+
+  document.getElementById("positionSettings").open = false;
+
+  selectDesign("ribbonmaroon");
 
   document.getElementById("themeCarousel").scrollTo({
     left: 0,
@@ -797,12 +1108,32 @@ function resetForm() {
   updatePreview();
 }
 
-/* MUAT GAMBAR */
+// ==========================================
+// MEMUAT FONT SEBELUM DOWNLOAD
+// ==========================================
+
+async function waitForSelectedFont() {
+  await document.fonts.ready;
+
+  const family = fontChoice.value;
+
+  await Promise.all([
+    document.fonts.load(`400 30px ${family}`),
+    document.fonts.load(`600 30px ${family}`),
+    document.fonts.load(`700 30px ${family}`)
+  ]);
+}
+
+// ==========================================
+// MEMUAT GAMBAR
+// ==========================================
+
 function loadCardImage(src) {
   return new Promise((resolve, reject) => {
     const img = new Image();
 
     img.onload = () => resolve(img);
+
     img.onerror = () => reject(
       new Error("Background gagal dimuat: " + src)
     );
@@ -811,13 +1142,16 @@ function loadCardImage(src) {
   });
 }
 
-/* PECAH TEKS MENJADI BARIS */
+// ==========================================
+// MEMECAH TEKS MENJADI BARIS
+// ==========================================
+
 function wrapCanvasText(ctx, text, maxWidth) {
   const paragraphs = String(text).split("\n");
   const lines = [];
 
   paragraphs.forEach(paragraph => {
-    if (!paragraph) {
+    if (paragraph.trim() === "") {
       lines.push("");
       return;
     }
@@ -863,7 +1197,10 @@ function wrapCanvasText(ctx, text, maxWidth) {
   return lines;
 }
 
-/* UNDUH PNG RESOLUSI TINGGI */
+// ==========================================
+// DOWNLOAD PNG
+// ==========================================
+
 async function downloadCard() {
   const button = document.getElementById("downloadBtn");
   const originalText = button.textContent;
@@ -872,71 +1209,59 @@ async function downloadCard() {
   button.textContent = "Menyiapkan kartu...";
 
   try {
-    updatePreview();
+    await waitForSelectedFont();
 
-    const image = await loadCardImage(DESIGNS[currentDesign].image);
+    const image = await loadCardImage(DESIGNS[currentDesign]);
 
     const canvas = document.createElement("canvas");
+
+    // Resolusi gambar
     canvas.width = 750;
     canvas.height = 1050;
 
     const ctx = canvas.getContext("2d");
+
     if (!ctx) throw new Error("Canvas tidak tersedia.");
 
     const W = canvas.width;
     const H = canvas.height;
 
-    ctx.fillStyle = DESIGNS[currentDesign].color;
-    ctx.fillRect(0, 0, W, H);
+    // Background kartu
+    ctx.drawImage(image, 0, 0, W, H);
 
-    /* Background dengan metode cover */
-    const scale = Math.max(
-      W / image.naturalWidth,
-      H / image.naturalHeight
-    );
-
-    const drawW = image.naturalWidth * scale;
-    const drawH = image.naturalHeight * scale;
-
-    ctx.drawImage(
-      image,
-      (W - drawW) / 2,
-      (H - drawH) / 2,
-      drawW,
-      drawH
-    );
-
-    const maxWidth = W * 0.78;
-    const family = fontChoice.value;
-    const color = textColor.value;
-
+    // Isi tulisan
     const toName = recipient.value.trim();
     const fromName = sender.value.trim();
     const msg = message.value.trim() || "Tuliskan pesan di sini.";
 
-    /* Ukuran dasar mengikuti pilihan pelanggan */
-    let nameSize = Math.round(35 * fontScale);
-    let labelSize = Math.round(25 * fontScale);
-    let messageSize = Math.round(29 * fontScale);
-    let gap = Math.round(38 * fontScale);
+    const family = fontChoice.value;
+    const color = selectedColor;
+
+    // Margin sama dengan preview
+    const maxWidth = W * (1 - horizontalMargin * 2 / 100);
+    const availableHeight = H * (1 - verticalMargin * 2 / 100);
+
+    let nameSize = 35 * fontScale;
+    let labelSize = 25 * fontScale;
+    let messageSize = 29 * fontScale;
 
     let layout;
 
     function prepareLayout() {
-      const recipientLines = [];
-      const senderLines = [];
+      let recipientLines = [];
+      let senderLines = [];
 
       if (toName) {
-        ctx.font = `700 ${nameSize}px ${family}`;
-        recipientLines.push(...wrapCanvasText(ctx, toName, maxWidth));
+        ctx.font = `400 ${nameSize}px ${family}`;
+        recipientLines = wrapCanvasText(ctx, toName, maxWidth);
       }
 
       if (fromName) {
-        ctx.font = `700 ${nameSize}px ${family}`;
-        senderLines.push(...wrapCanvasText(ctx, fromName, maxWidth));
+        ctx.font = `400 ${nameSize}px ${family}`;
+        senderLines = wrapCanvasText(ctx, fromName, maxWidth);
       }
 
-      ctx.font = `${messageSize}px ${family}`;
+      ctx.font = `400 ${messageSize}px ${family}`;
       const messageLines = wrapCanvasText(ctx, msg, maxWidth);
 
       const labelHeight = labelSize * 1.3;
@@ -951,14 +1276,13 @@ async function downloadCard() {
         ? labelHeight + senderLines.length * nameHeight
         : 0;
 
-      const gapCount =
-        Number(Boolean(toName)) + Number(Boolean(fromName));
+      const gap = Math.max(12, messageSize * 0.8);
 
       const totalHeight =
         recipientHeight +
         senderHeight +
         messageLines.length * messageHeight +
-        gap * gapCount;
+        (Number(Boolean(toName)) + Number(Boolean(fromName))) * gap;
 
       return {
         recipientLines,
@@ -967,90 +1291,90 @@ async function downloadCard() {
         labelHeight,
         nameHeight,
         messageHeight,
+        gap,
         totalHeight
       };
     }
 
     layout = prepareLayout();
 
-    /* Otomatis mengecilkan jika isi terlalu panjang */
-    while (layout.totalHeight > H * 0.80 && messageSize > 17) {
-      messageSize--;
-      gap = Math.max(12, gap - 1);
-      layout = prepareLayout();
-    }
+    // Perkecil otomatis jika tulisan terlalu panjang
+    let attempts = 0;
 
-    while (layout.totalHeight > H * 0.88 && nameSize > 15) {
-      nameSize--;
-      labelSize = Math.max(14, labelSize - 1);
+    while (
+      layout.totalHeight > availableHeight &&
+      attempts < 60
+    ) {
+      nameSize *= 0.97;
+      labelSize *= 0.97;
+      messageSize *= 0.97;
+
       layout = prepareLayout();
+      attempts++;
     }
 
     ctx.textAlign = "center";
     ctx.textBaseline = "top";
     ctx.fillStyle = color;
-    ctx.shadowColor = "rgba(255,255,255,0.35)";
-    ctx.shadowBlur = 1;
-    ctx.shadowOffsetX = 0;
-    ctx.shadowOffsetY = 1;
 
-    const centerX = W / 2;
-    let y = Math.max(40, (H - layout.totalHeight) / 2);
+    // Posisi awal tulisan di tengah area margin
+    const centerY = H / 2;
+    let y = centerY - layout.totalHeight / 2;
 
     function drawLines(lines, font, lineHeight) {
       ctx.font = font;
 
       lines.forEach(line => {
-        ctx.fillText(line, centerX, y, maxWidth);
+        ctx.fillText(line, W / 2, y, maxWidth);
         y += lineHeight;
       });
     }
 
-    /* TO hanya muncul jika nama penerima diisi */
+    // Penerima
     if (toName) {
       drawLines(
         ["To:"],
-        `600 ${labelSize}px ${family}`,
+        `400 ${labelSize}px ${family}`,
         layout.labelHeight
       );
 
       drawLines(
         layout.recipientLines,
-        `700 ${nameSize}px ${family}`,
+        `400 ${nameSize}px ${family}`,
         layout.nameHeight
       );
 
-      y += gap;
+      y += layout.gap;
     }
 
-    /* PESAN UCAPAN */
+    // Pesan
     drawLines(
       layout.messageLines,
-      `${messageSize}px ${family}`,
+      `400 ${messageSize}px ${family}`,
       layout.messageHeight
     );
 
-    /* FROM hanya muncul jika nama pengirim diisi */
+    // Pengirim
     if (fromName) {
-      y += gap;
+      y += layout.gap;
 
       drawLines(
         ["From:"],
-        `600 ${labelSize}px ${family}`,
+        `400 ${labelSize}px ${family}`,
         layout.labelHeight
       );
 
       drawLines(
         layout.senderLines,
-        `700 ${nameSize}px ${family}`,
+        `400 ${nameSize}px ${family}`,
         layout.nameHeight
       );
     }
 
-    ctx.shadowColor = "transparent";
-    ctx.shadowBlur = 0;
-    ctx.shadowOffsetY = 0;
+    // Warna teks
+    ctx.fillStyle = color;
 
+    // Buat PNG
     const blob = await new Promise((resolve, reject) => {
       canvas.toBlob(result => {
         if (result) resolve(result);
@@ -1072,15 +1396,24 @@ async function downloadCard() {
 
   } catch (error) {
     console.error(error);
-    alert("Kartu gagal diunduh. Periksa nama dan lokasi file background.");
+
+    alert(
+      "Kartu gagal diunduh. Periksa kembali file desain di folder backgrounds."
+    );
+
   } finally {
     button.disabled = false;
     button.textContent = originalText;
   }
 }
 
-/* PREVIEW PERTAMA */
+// ==========================================
+// PREVIEW AWAL
+// ==========================================
+
+selectDesign("ribbonmaroon");
 updatePreview();
+
 </script>
 
 </body>
