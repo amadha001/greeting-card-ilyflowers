@@ -420,35 +420,35 @@ button { -webkit-tap-highlight-color: transparent; cursor: pointer; }
     <div class="theme-carousel" id="themeCarousel">
 
       <button type="button" class="theme-card active"
-              data-design="pink" aria-pressed="true"
-              onclick="selectDesign('pink')">
-        <img src="backgrounds/kartu-pink.png" alt="Soft Pink">
-        <span class="theme-name">Soft Pink</span>
-        <span class="theme-status">Desain 01</span>
+              data-design="ribbonmaroon" aria-pressed="true"
+              onclick="selectDesign('ribbonmaroon')">
+        <img src="backgrounds/kartu-ribbonmaroon.png" alt="Ribbon Maroon">
+        <span class="theme-name">Ribbon Maroon</span>
+        <span class="theme-status">Maroon</span>
       </button>
 
       <button type="button" class="theme-card"
-              data-design="cream" aria-pressed="false"
-              onclick="selectDesign('cream')">
-        <img src="backgrounds/kartu-cream.png" alt="Cream">
-        <span class="theme-name">Cream</span>
-        <span class="theme-status">Desain 02</span>
+              data-design="ribbonblack" aria-pressed="false"
+              onclick="selectDesign('ribbonblack')">
+        <img src="backgrounds/kartu-ribbonblack.png" alt="Ribbon Black">
+        <span class="theme-name">Ribbon Black</span>
+        <span class="theme-status">Black</span>
       </button>
 
       <button type="button" class="theme-card"
-              data-design="blue" aria-pressed="false"
-              onclick="selectDesign('blue')">
-        <img src="backgrounds/kartu-blue.png" alt="Soft Blue">
+              data-design="softblue" aria-pressed="false"
+              onclick="selectDesign('softblue')">
+        <img src="backgrounds/kartu-softblue.png" alt="Soft Blue">
         <span class="theme-name">Soft Blue</span>
-        <span class="theme-status">Desain 03</span>
+        <span class="theme-status">Blue</span>
       </button>
 
       <button type="button" class="theme-card"
-              data-design="maroon" aria-pressed="false"
-              onclick="selectDesign('maroon')">
-        <img src="backgrounds/kartu-maroon.png" alt="Maroon">
-        <span class="theme-name">Maroon</span>
-        <span class="theme-status">Desain 04</span>
+              data-design="whitegold" aria-pressed="false"
+              onclick="selectDesign('whitegold')">
+        <img src="backgrounds/kartu-maroon.png" alt="White Gold">
+        <span class="theme-name">White Gold</span>
+        <span class="theme-status">Gold</span>
       </button>
 
       <button type="button" class="theme-card"
@@ -456,7 +456,7 @@ button { -webkit-tap-highlight-color: transparent; cursor: pointer; }
               onclick="selectDesign('flowers')">
         <img src="backgrounds/kartu-flowers.png" alt="Flowers">
         <span class="theme-name">Flowers</span>
-        <span class="theme-status">Desain 05</span>
+        <span class="theme-status">flowers</span>
       </button>
 
       <button type="button" class="theme-card"
@@ -464,23 +464,39 @@ button { -webkit-tap-highlight-color: transparent; cursor: pointer; }
               onclick="selectDesign('polos')">
         <img src="backgrounds/kartu-polos.png" alt="Polos">
         <span class="theme-name">Polos</span>
-        <span class="theme-status">Desain 06</span>
+        <span class="theme-status">white</span>
       </button>
 
       <button type="button" class="theme-card"
-              data-design="hitam" aria-pressed="false"
-              onclick="selectDesign('hitam')">
-        <img src="backgrounds/kartu-hitam.png" alt="Black">
-        <span class="theme-name">Black</span>
-        <span class="theme-status">Desain 07</span>
+              data-design="ribbonred" aria-pressed="false"
+              onclick="selectDesign('ribbonrrd')">
+        <img src="backgrounds/kartu-hitam.png" alt="Ribbon Red">
+        <span class="theme-name">Ribbon Red</span>
+        <span class="theme-status">Red</span>
       </button>
 
       <button type="button" class="theme-card"
-              data-design="magenta" aria-pressed="false"
-              onclick="selectDesign('magenta')">
-        <img src="backgrounds/kartu-magenta.png" alt="Magenta">
-        <span class="theme-name">Magenta</span>
-        <span class="theme-status">Desain 08</span>
+              data-design="bouquet" aria-pressed="false"
+              onclick="selectDesign('bouquet')">
+        <img src="backgrounds/kartu-bouquet.png" alt="Bouquet">
+        <span class="theme-name">Bouquet</span>
+        <span class="theme-status">bouquet</span>
+      </button>
+
+       <button type="button" class="theme-card"
+              data-design="vintage" aria-pressed="false"
+              onclick="selectDesign('vintage')">
+        <img src="backgrounds/kartu-vintage.png" alt="Vintage">
+        <span class="theme-name">vintage</span>
+        <span class="theme-status">vintage</span>
+      </button>
+
+       <button type="button" class="theme-card"
+              data-design="butterflypink" aria-pressed="false"
+              onclick="selectDesign('butterflypink')">
+        <img src="backgrounds/kartu-butterflypink.png" alt="Butterfly pink">
+        <span class="theme-name">Butterfly Pink</span>
+        <span class="theme-status">Pink</span>
       </button>
 
     </div>
@@ -615,20 +631,20 @@ button { -webkit-tap-highlight-color: transparent; cursor: pointer; }
 
 <script>
 const DESIGNS = {
-  pink: {
-    image: "backgrounds/kartu-pink.png",
+  ribbonmaroon: {
+    image: "backgrounds/kartu-ribbonmaroon.png",
     color: "#f9e5ed"
   },
-  cream: {
-    image: "backgrounds/kartu-cream.png",
+  ribbonblack: {
+    image: "backgrounds/kartu-ribbonblack.png",
     color: "#f6ead5"
   },
-  blue: {
-    image: "backgrounds/kartu-blue.png",
+  sofblue: {
+    image: "backgrounds/kartu-softblue.png",
     color: "#dceaf7"
   },
-  maroon: {
-    image: "backgrounds/kartu-maroon.png",
+  whitegold: {
+    image: "backgrounds/kartu-whitegold.png",
     color: "#e8dff5"
   },
   flowers: {
@@ -639,12 +655,20 @@ const DESIGNS = {
     image: "backgrounds/kartu-polos.png",
     color: "#e8dff5"
   },
-  hitam: {
-    image: "backgrounds/kartu-hitam.png",
+  ribbonred: {
+    image: "backgrounds/kartu-ribbonred.png",
     color: "#e8dff5"
   },
-  magenta: {
-    image: "backgrounds/kartu-magenta.png",
+  bouquet: {
+    image: "backgrounds/kartu-bouquet.png",
+    color: "#e8dff5"
+  }, 
+  vintage: {
+    image: "backgrounds/kartu-vintage.png",
+    color: "#e8dff5"
+  }, 
+  butterflypink: {
+    image: "backgrounds/kartu-butterflypink.png",
     color: "#e8dff5"
   }
 };
