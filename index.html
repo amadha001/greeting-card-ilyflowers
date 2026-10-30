@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -450,11 +449,6 @@ button { cursor: pointer; -webkit-tap-highlight-color: transparent; }
   box-shadow: 0 12px 30px rgba(100,65,80,.16);
 }
 
-/*
-  PREVIEW MENGGUNAKAN CANVAS YANG SAMA
-  DENGAN FILE PNG YANG DIUNDUH.
-*/
-
 #greetingCanvas {
   display: block;
   width: 100%;
@@ -755,7 +749,7 @@ button { cursor: pointer; -webkit-tap-highlight-color: transparent; }
         </div>
 
         <span class="helper">
-          Perkecil atau perbesar nama dan pesan pada kartu.
+          Perkecil atau perbesar semua tulisan pada kartu.
         </span>
 
       </div>
@@ -820,7 +814,6 @@ button { cursor: pointer; -webkit-tap-highlight-color: transparent; }
 
       <div class="greeting-card">
 
-        <!-- Canvas yang sama digunakan untuk preview dan download -->
         <canvas id="greetingCanvas" width="750" height="1050">
         </canvas>
 
@@ -853,7 +846,6 @@ button { cursor: pointer; -webkit-tap-highlight-color: transparent; }
 
 // ==========================================
 // DAFTAR DESAIN
-// EDIT: Tambahkan desain baru di sini
 // ==========================================
 
 const DESIGNS = {
@@ -891,7 +883,6 @@ const ctx = canvas.getContext("2d");
 const W = 750;
 const H = 1050;
 
-// Cache gambar agar tidak dimuat berulang kali.
 const imageCache = {};
 
 let renderVersion = 0;
@@ -1188,6 +1179,7 @@ function drawCoverImage(ctx, image) {
 
 // ==========================================
 // MEMBUAT LAYOUT TULISAN
+// SEMUA TULISAN MENGGUNAKAN UKURAN SAMA
 // ==========================================
 
 function createLayout() {
@@ -1203,9 +1195,8 @@ function createLayout() {
 
   const availableHeight = H * (1 - verticalMargin * 2 / 100);
 
-  let nameSize = 35 * fontScale;
-  let labelSize = 25 * fontScale;
-  let messageSize = 29 * fontScale;
+  // SATU UKURAN FONT UNTUK SEMUA TULISAN
+  let fontSize = 29 * fontScale;
 
   let layout;
 
@@ -1216,7 +1207,7 @@ function createLayout() {
 
     if (toName) {
 
-      ctx.font = `400 ${nameSize}px ${family}`;
+      ctx.font = `400 ${fontSize}px ${family}`;
 
       recipientLines = wrapCanvasText(
         ctx,
@@ -1228,7 +1219,7 @@ function createLayout() {
 
     if (fromName) {
 
-      ctx.font = `400 ${nameSize}px ${family}`;
+      ctx.font = `400 ${fontSize}px ${family}`;
 
       senderLines = wrapCanvasText(
         ctx,
@@ -1238,7 +1229,7 @@ function createLayout() {
 
     }
 
-    ctx.font = `400 ${messageSize}px ${family}`;
+    ctx.font = `400 ${fontSize}px ${family}`;
 
     const messageLines = wrapCanvasText(
       ctx,
@@ -1246,24 +1237,23 @@ function createLayout() {
       maxWidth
     );
 
-    const labelHeight = labelSize * 1.3;
-    const nameHeight = nameSize * 1.3;
-    const messageHeight = messageSize * 1.5;
+    // Tinggi baris sama untuk semua bagian tulisan.
+    const lineHeight = fontSize * 1.5;
 
     const recipientHeight = toName
-      ? labelHeight + recipientLines.length * nameHeight
+      ? (1 + recipientLines.length) * lineHeight
       : 0;
 
     const senderHeight = fromName
-      ? labelHeight + senderLines.length * nameHeight
+      ? (1 + senderLines.length) * lineHeight
       : 0;
 
-    const gap = Math.max(12, messageSize * 0.8);
+    const gap = Math.max(12, fontSize * 0.8);
 
     const totalHeight =
       recipientHeight +
       senderHeight +
-      messageLines.length * messageHeight +
+      messageLines.length * lineHeight +
       (Number(Boolean(toName)) + Number(Boolean(fromName))) * gap;
 
     return {
@@ -1272,11 +1262,12 @@ function createLayout() {
       senderLines,
       messageLines,
 
-      labelHeight,
-      nameHeight,
-      messageHeight,
-      gap,
+      // Semua tinggi baris sama.
+      labelHeight: lineHeight,
+      nameHeight: lineHeight,
+      messageHeight: lineHeight,
 
+      gap,
       totalHeight
 
     };
@@ -1285,7 +1276,8 @@ function createLayout() {
 
   layout = prepareLayout();
 
-  // PERKECIL OTOMATIS JIKA TEKS TERLALU PANJANG
+  // PERKECIL SEMUA TULISAN BERSAMAAN
+  // JIKA TEKS TERLALU PANJANG
   let attempts = 0;
 
   while (
@@ -1293,9 +1285,7 @@ function createLayout() {
     attempts < 60
   ) {
 
-    nameSize *= 0.97;
-    labelSize *= 0.97;
-    messageSize *= 0.97;
+    fontSize *= 0.97;
 
     layout = prepareLayout();
 
@@ -1306,9 +1296,13 @@ function createLayout() {
   return {
 
     layout,
-    nameSize,
-    labelSize,
-    messageSize,
+
+    // Semua bagian memakai fontSize yang sama.
+    fontSize,
+    nameSize: fontSize,
+    labelSize: fontSize,
+    messageSize: fontSize,
+
     maxWidth
 
   };
@@ -1330,17 +1324,12 @@ async function renderCard() {
     DESIGNS[currentDesign]
   );
 
-  // Jika ada perubahan baru ketika gambar/font dimuat,
-  // render lama tidak akan menimpa preview terbaru.
   if (version !== renderVersion) return;
 
-  // Bersihkan canvas.
   ctx.clearRect(0, 0, W, H);
 
-  // Gambar background.
   drawCoverImage(ctx, image);
 
-  // Ambil data layout.
   const result = createLayout();
 
   const layout = result.layout;
@@ -1354,17 +1343,15 @@ async function renderCard() {
   const toName = recipient.value.trim();
   const fromName = sender.value.trim();
 
-  // Pengaturan tulisan.
   ctx.textAlign = "center";
   ctx.textBaseline = "top";
   ctx.fillStyle = selectedColor;
 
-  // Posisi awal tulisan di tengah area margin.
   const centerY = H / 2;
 
   let y = centerY - layout.totalHeight / 2;
 
-  // Fungsi menggambar baris teks.
+  // FUNGSI MENGGAMBAR BARIS TEKS
   function drawLines(lines, font, lineHeight) {
 
     ctx.font = font;
@@ -1429,11 +1416,11 @@ async function renderCard() {
 
   }
 
-  // Update label ukuran.
+  // UPDATE LABEL UKURAN
   document.getElementById("fontSizeLabel").textContent =
     Math.round(fontScale * 100) + "%";
 
-  // Update label margin.
+  // UPDATE LABEL MARGIN
   document.getElementById("horizontalValue").textContent =
     horizontalMargin + "%";
 
@@ -1500,7 +1487,7 @@ function resetForm() {
 
 // ==========================================
 // DOWNLOAD PNG
-// Canvas yang diunduh adalah canvas preview.
+// CANVAS YANG DIUNDUH ADALAH CANVAS PREVIEW
 // ==========================================
 
 async function downloadCard() {
@@ -1514,13 +1501,10 @@ async function downloadCard() {
 
   try {
 
-    // Pastikan font dan preview terbaru sudah selesai.
     await renderCard();
 
-    // Pastikan font sudah siap.
     await document.fonts.ready;
 
-    // Konversi canvas menjadi PNG.
     const blob = await new Promise((resolve, reject) => {
 
       canvas.toBlob(result => {
@@ -1535,7 +1519,6 @@ async function downloadCard() {
 
     });
 
-    // Buat file unduhan.
     const url = URL.createObjectURL(blob);
 
     const link = document.createElement("a");
