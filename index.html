@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -36,7 +37,7 @@ body {
 }
 
 button, input, textarea, select { font: inherit; }
-button { -webkit-tap-highlight-color: transparent; cursor: pointer; }
+button { cursor: pointer; -webkit-tap-highlight-color: transparent; }
 
 .site-background {
   position: fixed;
@@ -59,6 +60,7 @@ button { -webkit-tap-highlight-color: transparent; cursor: pointer; }
 }
 
 /* TOMBOL 3D */
+
 .btn-3d {
   display: inline-flex;
   align-items: center;
@@ -87,9 +89,14 @@ button { -webkit-tap-highlight-color: transparent; cursor: pointer; }
 }
 
 .btn-white:active { box-shadow: 0 1px 0 #e5d5dc; }
-.btn-3d:disabled { opacity: .7; cursor: wait; }
+
+.btn-3d:disabled {
+  opacity: .7;
+  cursor: wait;
+}
 
 /* HEADER */
+
 .topbar {
   display: flex;
   align-items: center;
@@ -115,6 +122,7 @@ button { -webkit-tap-highlight-color: transparent; cursor: pointer; }
 }
 
 /* PANEL */
+
 .panel {
   background: rgba(255,255,255,.95);
   border: 1px solid var(--border);
@@ -139,6 +147,7 @@ button { -webkit-tap-highlight-color: transparent; cursor: pointer; }
 }
 
 /* FORM */
+
 .form-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -193,6 +202,7 @@ button { -webkit-tap-highlight-color: transparent; cursor: pointer; }
 }
 
 /* CAROUSEL DESAIN */
+
 .theme-carousel {
   display: flex;
   gap: 13px;
@@ -262,7 +272,8 @@ button { -webkit-tap-highlight-color: transparent; cursor: pointer; }
   box-shadow: 0 3px 0 #ead9e0;
 }
 
-/* PILIHAN WARNA FONT */
+/* WARNA FONT */
+
 .color-palette {
   display: flex;
   flex-wrap: wrap;
@@ -319,6 +330,7 @@ button { -webkit-tap-highlight-color: transparent; cursor: pointer; }
 }
 
 /* UKURAN FONT */
+
 .font-size-controls {
   display: flex;
   align-items: center;
@@ -360,7 +372,8 @@ button { -webkit-tap-highlight-color: transparent; cursor: pointer; }
   color: #805368;
 }
 
-/* PENGATURAN POSISI TEKS */
+/* POSISI TEKS */
+
 .position-settings {
   border: 1px solid var(--border);
   border-radius: 12px;
@@ -390,13 +403,9 @@ button { -webkit-tap-highlight-color: transparent; cursor: pointer; }
   font-weight: 400;
 }
 
-.position-settings[open] summary::after {
-  content: "−";
-}
+.position-settings[open] summary::after { content: "−"; }
 
-.position-content {
-  padding: 0 14px 15px;
-}
+.position-content { padding: 0 14px 15px; }
 
 .range-row { margin-bottom: 16px; }
 
@@ -424,6 +433,7 @@ button { -webkit-tap-highlight-color: transparent; cursor: pointer; }
 }
 
 /* PREVIEW KARTU */
+
 .preview-area {
   display: flex;
   justify-content: center;
@@ -437,66 +447,23 @@ button { -webkit-tap-highlight-color: transparent; cursor: pointer; }
   overflow: hidden;
   border-radius: 5px;
   background-color: #f9e5ed;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
   box-shadow: 0 12px 30px rgba(100,65,80,.16);
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
-.card-content {
+/*
+  PREVIEW MENGGUNAKAN CANVAS YANG SAMA
+  DENGAN FILE PNG YANG DIUNDUH.
+*/
+
+#greetingCanvas {
+  display: block;
   width: 100%;
   height: 100%;
-  padding: 15% 18%;
-  overflow: hidden;
-  overflow-wrap: anywhere;
-  color: #604653;
-  font-family: 'DM Sans', sans-serif;
-  text-shadow: 0 1px 2px rgba(255,255,255,.45);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-
-.card-person {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-.card-person[hidden] { display: none; }
-
-.card-label {
-  font-size: clamp(11px, 3vw, 14px);
-  font-weight: 400;
-  line-height: 1.2;
-  margin: 0;
-  letter-spacing: .4px;
-}
-
-.card-name {
-  font-size: clamp(11px, 3.2vw, 19px);
-  font-weight: 400;
-  line-height: 1.3;
-  margin: 2px 0 0;
-  overflow-wrap: anywhere;
-}
-
-.card-message {
-  width: 100%;
-  font-size: clamp(11px, 3.2vw, 16px);
-  line-height: 1.5;
-  white-space: pre-wrap;
-  overflow-wrap: anywhere;
-  margin: 22px 0;
-  padding: 0;
+  object-fit: fill;
 }
 
 /* AKSI */
+
 .actions {
   display: flex;
   flex-wrap: wrap;
@@ -524,11 +491,13 @@ button { -webkit-tap-highlight-color: transparent; cursor: pointer; }
 </head>
 
 <body>
+
 <div class="site-background"></div>
 
 <section class="page">
 <div class="container">
 
+  <!-- HEADER -->
   <header class="topbar">
     <div class="brand-small">
       <img src="backgrounds/logo.png" alt=""
@@ -539,6 +508,7 @@ button { -webkit-tap-highlight-color: transparent; cursor: pointer; }
 
   <!-- PILIH DESAIN -->
   <section class="panel">
+
     <div class="section-heading">
       <h2>Pilih desain kartu</h2>
       <p>Pilih desain yang kamu suka.</p>
@@ -547,80 +517,80 @@ button { -webkit-tap-highlight-color: transparent; cursor: pointer; }
     <div class="theme-carousel" id="themeCarousel">
 
       <button type="button" class="theme-card active"
-              data-design="ribbonmaroon" aria-pressed="true"
-              onclick="selectDesign('ribbonmaroon')">
+        data-design="ribbonmaroon" aria-pressed="true"
+        onclick="selectDesign('ribbonmaroon')">
         <img src="backgrounds/kartu-ribbonmaroon.png" alt="Ribbon Maroon">
         <span class="theme-name">Ribbon Maroon</span>
         <span class="theme-status">Maroon</span>
       </button>
 
       <button type="button" class="theme-card"
-              data-design="ribbonblack" aria-pressed="false"
-              onclick="selectDesign('ribbonblack')">
+        data-design="ribbonblack" aria-pressed="false"
+        onclick="selectDesign('ribbonblack')">
         <img src="backgrounds/kartu-ribbonblack.png" alt="Ribbon Black">
         <span class="theme-name">Ribbon Black</span>
         <span class="theme-status">Black</span>
       </button>
 
       <button type="button" class="theme-card"
-              data-design="softblue" aria-pressed="false"
-              onclick="selectDesign('softblue')">
+        data-design="softblue" aria-pressed="false"
+        onclick="selectDesign('softblue')">
         <img src="backgrounds/kartu-softblue.png" alt="Soft Blue">
         <span class="theme-name">Soft Blue</span>
         <span class="theme-status">Blue</span>
       </button>
 
       <button type="button" class="theme-card"
-              data-design="whitegold" aria-pressed="false"
-              onclick="selectDesign('whitegold')">
+        data-design="whitegold" aria-pressed="false"
+        onclick="selectDesign('whitegold')">
         <img src="backgrounds/kartu-whitegold.png" alt="White Gold">
         <span class="theme-name">White Gold</span>
         <span class="theme-status">Gold</span>
       </button>
 
       <button type="button" class="theme-card"
-              data-design="flowers" aria-pressed="false"
-              onclick="selectDesign('flowers')">
+        data-design="flowers" aria-pressed="false"
+        onclick="selectDesign('flowers')">
         <img src="backgrounds/kartu-flowers.png" alt="Flowers">
         <span class="theme-name">Flowers</span>
         <span class="theme-status">Flowers</span>
       </button>
 
       <button type="button" class="theme-card"
-              data-design="polos" aria-pressed="false"
-              onclick="selectDesign('polos')">
+        data-design="polos" aria-pressed="false"
+        onclick="selectDesign('polos')">
         <img src="backgrounds/kartu-polos.png" alt="Polos">
         <span class="theme-name">Polos</span>
         <span class="theme-status">Polos</span>
       </button>
 
       <button type="button" class="theme-card"
-              data-design="ribbonred" aria-pressed="false"
-              onclick="selectDesign('ribbonred')">
+        data-design="ribbonred" aria-pressed="false"
+        onclick="selectDesign('ribbonred')">
         <img src="backgrounds/kartu-ribbonred.png" alt="Ribbon Red">
         <span class="theme-name">Ribbon Red</span>
         <span class="theme-status">Red</span>
       </button>
 
       <button type="button" class="theme-card"
-              data-design="bouquet" aria-pressed="false"
-              onclick="selectDesign('bouquet')">
+        data-design="bouquet" aria-pressed="false"
+        onclick="selectDesign('bouquet')">
         <img src="backgrounds/kartu-bouquet.png" alt="Bouquet">
         <span class="theme-name">Bouquet</span>
         <span class="theme-status">Bouquet</span>
       </button>
 
       <button type="button" class="theme-card"
-              data-design="vintage" aria-pressed="false"
-              onclick="selectDesign('vintage')">
+        data-design="vintage" aria-pressed="false"
+        onclick="selectDesign('vintage')">
         <img src="backgrounds/kartu-vintage.png" alt="Vintage">
         <span class="theme-name">Vintage</span>
         <span class="theme-status">Vintage</span>
       </button>
 
       <button type="button" class="theme-card"
-              data-design="butterflypink" aria-pressed="false"
-              onclick="selectDesign('butterflypink')">
+        data-design="butterflypink" aria-pressed="false"
+        onclick="selectDesign('butterflypink')">
         <img src="backgrounds/kartu-butterflypink.png" alt="Butterfly Pink">
         <span class="theme-name">Butterfly Pink</span>
         <span class="theme-status">Pink</span>
@@ -630,16 +600,19 @@ button { -webkit-tap-highlight-color: transparent; cursor: pointer; }
 
     <div class="carousel-controls">
       <button type="button" class="arrow-btn"
-              aria-label="Desain sebelumnya"
-              onclick="moveCarousel(-1)">‹</button>
+        aria-label="Desain sebelumnya"
+        onclick="moveCarousel(-1)">‹</button>
+
       <button type="button" class="arrow-btn"
-              aria-label="Desain berikutnya"
-              onclick="moveCarousel(1)">›</button>
+        aria-label="Desain berikutnya"
+        onclick="moveCarousel(1)">›</button>
     </div>
+
   </section>
 
   <!-- ISI UCAPAN -->
   <section class="panel">
+
     <div class="section-heading">
       <h2>Tulis pesanmu di sini</h2>
       <p>Isi nama dan pesan. Nama boleh dikosongkan jika tidak diperlukan.</p>
@@ -650,19 +623,19 @@ button { -webkit-tap-highlight-color: transparent; cursor: pointer; }
       <div class="field">
         <label for="recipient">Nama penerima</label>
         <input id="recipient" type="text" maxlength="50"
-               placeholder="Contoh: Nadia">
+          placeholder="Contoh: Nadia">
       </div>
 
       <div class="field">
         <label for="sender">Nama pengirim</label>
         <input id="sender" type="text" maxlength="50"
-               placeholder="Contoh: Amadha">
+          placeholder="Contoh: Amadha">
       </div>
 
       <div class="field full">
         <label for="message">Pesan ucapan</label>
         <textarea id="message" maxlength="500"
-                  placeholder="Tuliskan pesan ucapanmu..."></textarea>
+          placeholder="Tuliskan pesan ucapanmu..."></textarea>
         <span class="helper">Maksimal 500 karakter.</span>
       </div>
 
@@ -678,8 +651,9 @@ button { -webkit-tap-highlight-color: transparent; cursor: pointer; }
         </select>
       </div>
 
-      <!-- WARNA FONT -->
+      <!-- WARNA TULISAN -->
       <div class="field">
+
         <label>Pilih warna tulisan</label>
 
         <div class="color-palette" id="colorPalette">
@@ -751,40 +725,49 @@ button { -webkit-tap-highlight-color: transparent; cursor: pointer; }
         </div>
 
         <div class="color-custom">
-          <input type="color" id="customColor" value="#604653"
-                 aria-label="Pilih warna custom">
+          <input type="color" id="customColor"
+            value="#604653" aria-label="Pilih warna custom">
           <label for="customColor">Pilih warna sendiri</label>
         </div>
+
       </div>
 
       <!-- UKURAN FONT -->
       <div class="field full">
+
         <label>Ukuran tulisan kartu</label>
 
         <div class="font-size-controls">
+
           <button type="button" class="font-btn"
-                  onclick="changeFontSize(-1)"
-                  aria-label="Perkecil tulisan">A−</button>
+            onclick="changeFontSize(-1)"
+            aria-label="Perkecil tulisan">A−</button>
 
           <span id="fontSizeLabel">100%</span>
 
           <button type="button" class="font-btn"
-                  onclick="changeFontSize(1)"
-                  aria-label="Perbesar tulisan">A+</button>
+            onclick="changeFontSize(1)"
+            aria-label="Perbesar tulisan">A+</button>
 
           <button type="button" class="font-reset"
-                  onclick="resetFontSize()">Normal</button>
+            onclick="resetFontSize()">Normal</button>
+
         </div>
 
         <span class="helper">
           Perkecil atau perbesar nama dan pesan pada kartu.
         </span>
+
       </div>
 
-      <!-- PENGATURAN POSISI TEKS -->
+      <!-- PENGATURAN POSISI -->
       <div class="field full">
+
         <details class="position-settings" id="positionSettings">
-          <summary>Atur Posisi Teks <span class="helper">Opsional</span></summary>
+
+          <summary>
+            Atur Posisi Teks <span class="helper">Opsional</span>
+          </summary>
 
           <div class="position-content">
 
@@ -793,8 +776,9 @@ button { -webkit-tap-highlight-color: transparent; cursor: pointer; }
                 <label for="horizontalMargin">Margin kiri–kanan</label>
                 <strong id="horizontalValue">18%</strong>
               </div>
+
               <input type="range" id="horizontalMargin"
-                     min="5" max="30" value="18">
+                min="5" max="30" value="18">
             </div>
 
             <div class="range-row">
@@ -802,20 +786,23 @@ button { -webkit-tap-highlight-color: transparent; cursor: pointer; }
                 <label for="verticalMargin">Margin atas–bawah</label>
                 <strong id="verticalValue">15%</strong>
               </div>
+
               <input type="range" id="verticalMargin"
-                     min="5" max="30" value="15">
+                min="5" max="30" value="15">
             </div>
 
             <button type="button" class="reset-position"
-                    onclick="resetPosition()">
+              onclick="resetPosition()">
               Kembalikan ke Pengaturan Awal
             </button>
 
             <p class="helper">
               Geser pengaturan untuk menyesuaikan ruang tulisan pada kartu.
             </p>
+
           </div>
         </details>
+
       </div>
 
     </div>
@@ -823,44 +810,38 @@ button { -webkit-tap-highlight-color: transparent; cursor: pointer; }
 
   <!-- PREVIEW -->
   <section class="panel">
+
     <div class="section-heading">
       <h2>Preview kartu</h2>
       <p>Periksa hasilnya sebelum mengunduh.</p>
     </div>
 
     <div class="preview-area">
-      <div class="greeting-card" id="greetingCard">
-        <div class="card-content" id="cardContent">
 
-          <div class="card-person" id="recipientBlock" hidden>
-            <div class="card-label">To:</div>
-            <div class="card-name" id="previewRecipient"></div>
-          </div>
+      <div class="greeting-card">
 
-          <div class="card-message" id="previewMessage">
-            Tuliskan pesan di sini.
-          </div>
+        <!-- Canvas yang sama digunakan untuk preview dan download -->
+        <canvas id="greetingCanvas" width="750" height="1050">
+        </canvas>
 
-          <div class="card-person" id="senderBlock" hidden>
-            <div class="card-label">From:</div>
-            <div class="card-name" id="previewSender"></div>
-          </div>
-
-        </div>
       </div>
+
     </div>
 
     <div class="actions">
+
       <button class="btn-3d" id="downloadBtn"
-              type="button" onclick="downloadCard()">
+        type="button" onclick="downloadCard()">
         Unduh Kartu
       </button>
 
       <button class="btn-3d btn-white"
-              type="button" onclick="resetForm()">
+        type="button" onclick="resetForm()">
         Reset
       </button>
+
     </div>
+
   </section>
 
   <footer class="footer">@ilyflowerskdl</footer>
@@ -869,8 +850,10 @@ button { -webkit-tap-highlight-color: transparent; cursor: pointer; }
 </section>
 
 <script>
+
 // ==========================================
 // DAFTAR DESAIN
+// EDIT: Tambahkan desain baru di sini
 // ==========================================
 
 const DESIGNS = {
@@ -901,29 +884,86 @@ const recipient = document.getElementById("recipient");
 const sender = document.getElementById("sender");
 const message = document.getElementById("message");
 const fontChoice = document.getElementById("fontChoice");
-const card = document.getElementById("greetingCard");
-const cardContent = document.getElementById("cardContent");
 
-const recipientBlock = document.getElementById("recipientBlock");
-const senderBlock = document.getElementById("senderBlock");
+const canvas = document.getElementById("greetingCanvas");
+const ctx = canvas.getContext("2d");
+
+const W = 750;
+const H = 1050;
+
+// Cache gambar agar tidak dimuat berulang kali.
+const imageCache = {};
+
+let renderVersion = 0;
+
+// ==========================================
+// MEMUAT GAMBAR
+// ==========================================
+
+function loadCardImage(src) {
+
+  if (imageCache[src]) {
+    return Promise.resolve(imageCache[src]);
+  }
+
+  return new Promise((resolve, reject) => {
+
+    const img = new Image();
+
+    img.onload = () => {
+      imageCache[src] = img;
+      resolve(img);
+    };
+
+    img.onerror = () => {
+      reject(new Error("Background gagal dimuat: " + src));
+    };
+
+    img.src = src;
+
+  });
+
+}
+
+// ==========================================
+// MEMUAT FONT
+// ==========================================
+
+async function waitForSelectedFont() {
+
+  await document.fonts.ready;
+
+  const family = fontChoice.value;
+
+  await Promise.all([
+    document.fonts.load(`400 35px ${family}`),
+    document.fonts.load(`600 35px ${family}`),
+    document.fonts.load(`700 35px ${family}`)
+  ]);
+
+}
 
 // ==========================================
 // PILIH DESAIN
 // ==========================================
 
 function selectDesign(name) {
+
   if (!DESIGNS[name]) return;
 
   currentDesign = name;
 
   document.querySelectorAll(".theme-card").forEach(button => {
+
     const active = button.dataset.design === name;
 
     button.classList.toggle("active", active);
     button.setAttribute("aria-pressed", String(active));
+
   });
 
   updatePreview();
+
 }
 
 // ==========================================
@@ -931,10 +971,12 @@ function selectDesign(name) {
 // ==========================================
 
 function moveCarousel(direction) {
+
   document.getElementById("themeCarousel").scrollBy({
     left: direction * 170,
     behavior: "smooth"
   });
+
 }
 
 // ==========================================
@@ -942,26 +984,34 @@ function moveCarousel(direction) {
 // ==========================================
 
 function selectColor(color) {
+
   selectedColor = color;
 
   document.querySelectorAll(".color-choice").forEach(button => {
+
     button.classList.toggle(
       "active",
       button.dataset.color.toLowerCase() === color.toLowerCase()
     );
+
   });
 
   document.getElementById("customColor").value = color;
+
   updatePreview();
+
 }
 
 document.querySelectorAll(".color-choice").forEach(button => {
+
   button.addEventListener("click", () => {
     selectColor(button.dataset.color);
   });
+
 });
 
 document.getElementById("customColor").addEventListener("input", function() {
+
   selectedColor = this.value;
 
   document.querySelectorAll(".color-choice").forEach(button => {
@@ -969,6 +1019,7 @@ document.getElementById("customColor").addEventListener("input", function() {
   });
 
   updatePreview();
+
 });
 
 // ==========================================
@@ -976,6 +1027,7 @@ document.getElementById("customColor").addEventListener("input", function() {
 // ==========================================
 
 function changeFontSize(direction) {
+
   fontScale = Math.max(
     0.7,
     Math.min(
@@ -985,11 +1037,14 @@ function changeFontSize(direction) {
   );
 
   updatePreview();
+
 }
 
 function resetFontSize() {
+
   fontScale = 1;
   updatePreview();
+
 }
 
 // ==========================================
@@ -997,18 +1052,23 @@ function resetFontSize() {
 // ==========================================
 
 document.getElementById("horizontalMargin")
-  .addEventListener("input", function() {
-    horizontalMargin = Number(this.value);
-    updatePreview();
-  });
+.addEventListener("input", function() {
+
+  horizontalMargin = Number(this.value);
+  updatePreview();
+
+});
 
 document.getElementById("verticalMargin")
-  .addEventListener("input", function() {
-    verticalMargin = Number(this.value);
-    updatePreview();
-  });
+.addEventListener("input", function() {
+
+  verticalMargin = Number(this.value);
+  updatePreview();
+
+});
 
 function resetPosition() {
+
   horizontalMargin = 18;
   verticalMargin = 15;
 
@@ -1016,6 +1076,370 @@ function resetPosition() {
   document.getElementById("verticalMargin").value = 15;
 
   updatePreview();
+
+}
+
+// ==========================================
+// MEMECAH TEKS MENJADI BARIS
+// ==========================================
+
+function wrapCanvasText(ctx, text, maxWidth) {
+
+  const paragraphs = String(text).split("\n");
+  const lines = [];
+
+  paragraphs.forEach(paragraph => {
+
+    if (paragraph.trim() === "") {
+      lines.push("");
+      return;
+    }
+
+    const words = paragraph.split(/\s+/);
+    let line = "";
+
+    words.forEach(word => {
+
+      let remaining = word;
+
+      while (remaining.length > 0) {
+
+        const test = line
+          ? line + " " + remaining
+          : remaining;
+
+        if (ctx.measureText(test).width <= maxWidth) {
+
+          line = test;
+          remaining = "";
+
+        } else if (line) {
+
+          lines.push(line);
+          line = "";
+
+        } else {
+
+          let part = "";
+
+          for (const char of remaining) {
+
+            if (
+              ctx.measureText(part + char).width > maxWidth &&
+              part
+            ) break;
+
+            part += char;
+
+          }
+
+          if (!part) part = remaining[0];
+
+          lines.push(part);
+          remaining = remaining.slice(part.length);
+
+        }
+
+      }
+
+    });
+
+    if (line) lines.push(line);
+
+  });
+
+  return lines;
+
+}
+
+// ==========================================
+// MENGGAMBAR BACKGROUND
+// ==========================================
+
+function drawCoverImage(ctx, image) {
+
+  const imageRatio = image.width / image.height;
+  const canvasRatio = W / H;
+
+  let sx = 0;
+  let sy = 0;
+  let sw = image.width;
+  let sh = image.height;
+
+  if (imageRatio > canvasRatio) {
+
+    sw = image.height * canvasRatio;
+    sx = (image.width - sw) / 2;
+
+  } else {
+
+    sh = image.width / canvasRatio;
+    sy = (image.height - sh) / 2;
+
+  }
+
+  ctx.drawImage(
+    image,
+    sx, sy, sw, sh,
+    0, 0, W, H
+  );
+
+}
+
+// ==========================================
+// MEMBUAT LAYOUT TULISAN
+// ==========================================
+
+function createLayout() {
+
+  const toName = recipient.value.trim();
+  const fromName = sender.value.trim();
+
+  const msg = message.value.trim() || "Tuliskan pesan di sini.";
+
+  const family = fontChoice.value;
+
+  const maxWidth = W * (1 - horizontalMargin * 2 / 100);
+
+  const availableHeight = H * (1 - verticalMargin * 2 / 100);
+
+  let nameSize = 35 * fontScale;
+  let labelSize = 25 * fontScale;
+  let messageSize = 29 * fontScale;
+
+  let layout;
+
+  function prepareLayout() {
+
+    let recipientLines = [];
+    let senderLines = [];
+
+    if (toName) {
+
+      ctx.font = `400 ${nameSize}px ${family}`;
+
+      recipientLines = wrapCanvasText(
+        ctx,
+        toName,
+        maxWidth
+      );
+
+    }
+
+    if (fromName) {
+
+      ctx.font = `400 ${nameSize}px ${family}`;
+
+      senderLines = wrapCanvasText(
+        ctx,
+        fromName,
+        maxWidth
+      );
+
+    }
+
+    ctx.font = `400 ${messageSize}px ${family}`;
+
+    const messageLines = wrapCanvasText(
+      ctx,
+      msg,
+      maxWidth
+    );
+
+    const labelHeight = labelSize * 1.3;
+    const nameHeight = nameSize * 1.3;
+    const messageHeight = messageSize * 1.5;
+
+    const recipientHeight = toName
+      ? labelHeight + recipientLines.length * nameHeight
+      : 0;
+
+    const senderHeight = fromName
+      ? labelHeight + senderLines.length * nameHeight
+      : 0;
+
+    const gap = Math.max(12, messageSize * 0.8);
+
+    const totalHeight =
+      recipientHeight +
+      senderHeight +
+      messageLines.length * messageHeight +
+      (Number(Boolean(toName)) + Number(Boolean(fromName))) * gap;
+
+    return {
+
+      recipientLines,
+      senderLines,
+      messageLines,
+
+      labelHeight,
+      nameHeight,
+      messageHeight,
+      gap,
+
+      totalHeight
+
+    };
+
+  }
+
+  layout = prepareLayout();
+
+  // PERKECIL OTOMATIS JIKA TEKS TERLALU PANJANG
+  let attempts = 0;
+
+  while (
+    layout.totalHeight > availableHeight &&
+    attempts < 60
+  ) {
+
+    nameSize *= 0.97;
+    labelSize *= 0.97;
+    messageSize *= 0.97;
+
+    layout = prepareLayout();
+
+    attempts++;
+
+  }
+
+  return {
+
+    layout,
+    nameSize,
+    labelSize,
+    messageSize,
+    maxWidth
+
+  };
+
+}
+
+// ==========================================
+// RENDER KARTU
+// SATU FUNGSI UNTUK PREVIEW DAN DOWNLOAD
+// ==========================================
+
+async function renderCard() {
+
+  const version = ++renderVersion;
+
+  await waitForSelectedFont();
+
+  const image = await loadCardImage(
+    DESIGNS[currentDesign]
+  );
+
+  // Jika ada perubahan baru ketika gambar/font dimuat,
+  // render lama tidak akan menimpa preview terbaru.
+  if (version !== renderVersion) return;
+
+  // Bersihkan canvas.
+  ctx.clearRect(0, 0, W, H);
+
+  // Gambar background.
+  drawCoverImage(ctx, image);
+
+  // Ambil data layout.
+  const result = createLayout();
+
+  const layout = result.layout;
+
+  const nameSize = result.nameSize;
+  const labelSize = result.labelSize;
+  const messageSize = result.messageSize;
+
+  const maxWidth = result.maxWidth;
+
+  const toName = recipient.value.trim();
+  const fromName = sender.value.trim();
+
+  // Pengaturan tulisan.
+  ctx.textAlign = "center";
+  ctx.textBaseline = "top";
+  ctx.fillStyle = selectedColor;
+
+  // Posisi awal tulisan di tengah area margin.
+  const centerY = H / 2;
+
+  let y = centerY - layout.totalHeight / 2;
+
+  // Fungsi menggambar baris teks.
+  function drawLines(lines, font, lineHeight) {
+
+    ctx.font = font;
+
+    lines.forEach(line => {
+
+      ctx.fillText(
+        line,
+        W / 2,
+        y,
+        maxWidth
+      );
+
+      y += lineHeight;
+
+    });
+
+  }
+
+  // PENERIMA
+  if (toName) {
+
+    drawLines(
+      ["To:"],
+      `400 ${labelSize}px ${fontChoice.value}`,
+      layout.labelHeight
+    );
+
+    drawLines(
+      layout.recipientLines,
+      `400 ${nameSize}px ${fontChoice.value}`,
+      layout.nameHeight
+    );
+
+    y += layout.gap;
+
+  }
+
+  // PESAN
+  drawLines(
+    layout.messageLines,
+    `400 ${messageSize}px ${fontChoice.value}`,
+    layout.messageHeight
+  );
+
+  // PENGIRIM
+  if (fromName) {
+
+    y += layout.gap;
+
+    drawLines(
+      ["From:"],
+      `400 ${labelSize}px ${fontChoice.value}`,
+      layout.labelHeight
+    );
+
+    drawLines(
+      layout.senderLines,
+      `400 ${nameSize}px ${fontChoice.value}`,
+      layout.nameHeight
+    );
+
+  }
+
+  // Update label ukuran.
+  document.getElementById("fontSizeLabel").textContent =
+    Math.round(fontScale * 100) + "%";
+
+  // Update label margin.
+  document.getElementById("horizontalValue").textContent =
+    horizontalMargin + "%";
+
+  document.getElementById("verticalValue").textContent =
+    verticalMargin + "%";
+
 }
 
 // ==========================================
@@ -1023,53 +1447,13 @@ function resetPosition() {
 // ==========================================
 
 function updatePreview() {
-  const toName = recipient.value.trim();
-  const fromName = sender.value.trim();
 
-  document.getElementById("previewRecipient").textContent = toName;
-  document.getElementById("previewSender").textContent = fromName;
+  renderCard().catch(error => {
 
-  recipientBlock.hidden = !toName;
-  senderBlock.hidden = !fromName;
+    console.error(error);
 
-  document.getElementById("previewMessage").textContent =
-    message.value.trim() || "Tuliskan pesan di sini.";
-
-  card.style.backgroundImage =
-    `url("${DESIGNS[currentDesign]}")`;
-
-  cardContent.style.fontFamily = fontChoice.value;
-  cardContent.style.color = selectedColor;
-
-  // Margin preview
-  cardContent.style.padding =
-    `${verticalMargin}% ${horizontalMargin}%`;
-
-  // Ukuran font
-  document.getElementById("fontSizeLabel").textContent =
-    Math.round(fontScale * 100) + "%";
-
-  document.querySelectorAll(".card-name").forEach(element => {
-    element.style.fontSize =
-      `clamp(8px, ${3.2 * fontScale}vw, ${19 * fontScale}px)`;
   });
 
-  document.querySelectorAll(".card-label").forEach(element => {
-    element.style.fontSize =
-      `clamp(8px, ${3 * fontScale}vw, ${14 * fontScale}px)`;
-  });
-
-  const previewMessage = document.getElementById("previewMessage");
-
-  previewMessage.style.fontSize =
-    `clamp(8px, ${3.2 * fontScale}vw, ${16 * fontScale}px)`;
-
-  // Label margin
-  document.getElementById("horizontalValue").textContent =
-    horizontalMargin + "%";
-
-  document.getElementById("verticalValue").textContent =
-    verticalMargin + "%";
 }
 
 // ==========================================
@@ -1077,8 +1461,10 @@ function updatePreview() {
 // ==========================================
 
 [recipient, sender, message, fontChoice].forEach(element => {
+
   element.addEventListener("input", updatePreview);
   element.addEventListener("change", updatePreview);
+
 });
 
 // ==========================================
@@ -1086,14 +1472,17 @@ function updatePreview() {
 // ==========================================
 
 function resetForm() {
+
   recipient.value = "";
   sender.value = "";
   message.value = "";
 
   fontChoice.selectedIndex = 0;
+
   fontScale = 1;
 
   selectColor("#604653");
+
   resetPosition();
 
   document.getElementById("positionSettings").open = false;
@@ -1106,295 +1495,66 @@ function resetForm() {
   });
 
   updatePreview();
-}
 
-// ==========================================
-// MEMUAT FONT SEBELUM DOWNLOAD
-// ==========================================
-
-async function waitForSelectedFont() {
-  await document.fonts.ready;
-
-  const family = fontChoice.value;
-
-  await Promise.all([
-    document.fonts.load(`400 30px ${family}`),
-    document.fonts.load(`600 30px ${family}`),
-    document.fonts.load(`700 30px ${family}`)
-  ]);
-}
-
-// ==========================================
-// MEMUAT GAMBAR
-// ==========================================
-
-function loadCardImage(src) {
-  return new Promise((resolve, reject) => {
-    const img = new Image();
-
-    img.onload = () => resolve(img);
-
-    img.onerror = () => reject(
-      new Error("Background gagal dimuat: " + src)
-    );
-
-    img.src = src;
-  });
-}
-
-// ==========================================
-// MEMECAH TEKS MENJADI BARIS
-// ==========================================
-
-function wrapCanvasText(ctx, text, maxWidth) {
-  const paragraphs = String(text).split("\n");
-  const lines = [];
-
-  paragraphs.forEach(paragraph => {
-    if (paragraph.trim() === "") {
-      lines.push("");
-      return;
-    }
-
-    const words = paragraph.split(/\s+/);
-    let line = "";
-
-    words.forEach(word => {
-      let remaining = word;
-
-      while (remaining.length > 0) {
-        const test = line ? line + " " + remaining : remaining;
-
-        if (ctx.measureText(test).width <= maxWidth) {
-          line = test;
-          remaining = "";
-        } else if (line) {
-          lines.push(line);
-          line = "";
-        } else {
-          let part = "";
-
-          for (const char of remaining) {
-            if (
-              ctx.measureText(part + char).width > maxWidth &&
-              part
-            ) break;
-
-            part += char;
-          }
-
-          if (!part) part = remaining[0];
-
-          lines.push(part);
-          remaining = remaining.slice(part.length);
-        }
-      }
-    });
-
-    if (line) lines.push(line);
-  });
-
-  return lines;
 }
 
 // ==========================================
 // DOWNLOAD PNG
+// Canvas yang diunduh adalah canvas preview.
 // ==========================================
 
 async function downloadCard() {
+
   const button = document.getElementById("downloadBtn");
+
   const originalText = button.textContent;
 
   button.disabled = true;
   button.textContent = "Menyiapkan kartu...";
 
   try {
-    await waitForSelectedFont();
 
-    const image = await loadCardImage(DESIGNS[currentDesign]);
+    // Pastikan font dan preview terbaru sudah selesai.
+    await renderCard();
 
-    const canvas = document.createElement("canvas");
+    // Pastikan font sudah siap.
+    await document.fonts.ready;
 
-    // Resolusi gambar
-    canvas.width = 750;
-    canvas.height = 1050;
-
-    const ctx = canvas.getContext("2d");
-
-    if (!ctx) throw new Error("Canvas tidak tersedia.");
-
-    const W = canvas.width;
-    const H = canvas.height;
-
-    // Background kartu
-    ctx.drawImage(image, 0, 0, W, H);
-
-    // Isi tulisan
-    const toName = recipient.value.trim();
-    const fromName = sender.value.trim();
-    const msg = message.value.trim() || "Tuliskan pesan di sini.";
-
-    const family = fontChoice.value;
-    const color = selectedColor;
-
-    // Margin sama dengan preview
-    const maxWidth = W * (1 - horizontalMargin * 2 / 100);
-    const availableHeight = H * (1 - verticalMargin * 2 / 100);
-
-    let nameSize = 35 * fontScale;
-    let labelSize = 25 * fontScale;
-    let messageSize = 29 * fontScale;
-
-    let layout;
-
-    function prepareLayout() {
-      let recipientLines = [];
-      let senderLines = [];
-
-      if (toName) {
-        ctx.font = `400 ${nameSize}px ${family}`;
-        recipientLines = wrapCanvasText(ctx, toName, maxWidth);
-      }
-
-      if (fromName) {
-        ctx.font = `400 ${nameSize}px ${family}`;
-        senderLines = wrapCanvasText(ctx, fromName, maxWidth);
-      }
-
-      ctx.font = `400 ${messageSize}px ${family}`;
-      const messageLines = wrapCanvasText(ctx, msg, maxWidth);
-
-      const labelHeight = labelSize * 1.3;
-      const nameHeight = nameSize * 1.3;
-      const messageHeight = messageSize * 1.5;
-
-      const recipientHeight = toName
-        ? labelHeight + recipientLines.length * nameHeight
-        : 0;
-
-      const senderHeight = fromName
-        ? labelHeight + senderLines.length * nameHeight
-        : 0;
-
-      const gap = Math.max(12, messageSize * 0.8);
-
-      const totalHeight =
-        recipientHeight +
-        senderHeight +
-        messageLines.length * messageHeight +
-        (Number(Boolean(toName)) + Number(Boolean(fromName))) * gap;
-
-      return {
-        recipientLines,
-        senderLines,
-        messageLines,
-        labelHeight,
-        nameHeight,
-        messageHeight,
-        gap,
-        totalHeight
-      };
-    }
-
-    layout = prepareLayout();
-
-    // Perkecil otomatis jika tulisan terlalu panjang
-    let attempts = 0;
-
-    while (
-      layout.totalHeight > availableHeight &&
-      attempts < 60
-    ) {
-      nameSize *= 0.97;
-      labelSize *= 0.97;
-      messageSize *= 0.97;
-
-      layout = prepareLayout();
-      attempts++;
-    }
-
-    ctx.textAlign = "center";
-    ctx.textBaseline = "top";
-    ctx.fillStyle = color;
-
-    // Posisi awal tulisan di tengah area margin
-    const centerY = H / 2;
-    let y = centerY - layout.totalHeight / 2;
-
-    function drawLines(lines, font, lineHeight) {
-      ctx.font = font;
-
-      lines.forEach(line => {
-        ctx.fillText(line, W / 2, y, maxWidth);
-        y += lineHeight;
-      });
-    }
-
-    // Penerima
-    if (toName) {
-      drawLines(
-        ["To:"],
-        `400 ${labelSize}px ${family}`,
-        layout.labelHeight
-      );
-
-      drawLines(
-        layout.recipientLines,
-        `400 ${nameSize}px ${family}`,
-        layout.nameHeight
-      );
-
-      y += layout.gap;
-    }
-
-    // Pesan
-    drawLines(
-      layout.messageLines,
-      `400 ${messageSize}px ${family}`,
-      layout.messageHeight
-    );
-
-    // Pengirim
-    if (fromName) {
-      y += layout.gap;
-
-      drawLines(
-        ["From:"],
-        `400 ${labelSize}px ${family}`,
-        layout.labelHeight
-      );
-
-      drawLines(
-        layout.senderLines,
-        `400 ${nameSize}px ${family}`,
-        layout.nameHeight
-      );
-    }
-
-    // Warna teks
-    ctx.fillStyle = color;
-
-    // Buat PNG
+    // Konversi canvas menjadi PNG.
     const blob = await new Promise((resolve, reject) => {
+
       canvas.toBlob(result => {
-        if (result) resolve(result);
-        else reject(new Error("PNG gagal dibuat."));
+
+        if (result) {
+          resolve(result);
+        } else {
+          reject(new Error("PNG gagal dibuat."));
+        }
+
       }, "image/png");
+
     });
 
+    // Buat file unduhan.
     const url = URL.createObjectURL(blob);
+
     const link = document.createElement("a");
 
     link.download = "kartu-ucapan-2R.png";
     link.href = url;
 
     document.body.appendChild(link);
+
     link.click();
+
     link.remove();
 
-    setTimeout(() => URL.revokeObjectURL(url), 1500);
+    setTimeout(() => {
+      URL.revokeObjectURL(url);
+    }, 1500);
 
   } catch (error) {
+
     console.error(error);
 
     alert(
@@ -1402,9 +1562,12 @@ async function downloadCard() {
     );
 
   } finally {
+
     button.disabled = false;
     button.textContent = originalText;
+
   }
+
 }
 
 // ==========================================
@@ -1412,7 +1575,6 @@ async function downloadCard() {
 // ==========================================
 
 selectDesign("ribbonmaroon");
-updatePreview();
 
 </script>
 
